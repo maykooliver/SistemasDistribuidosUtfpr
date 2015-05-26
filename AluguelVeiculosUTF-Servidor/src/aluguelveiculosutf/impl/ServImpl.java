@@ -4,14 +4,24 @@
  * and open the template in the editor.
  */
 package aluguelveiculosutf.impl;
-
-import java.rmi.AlreadyBoundException;
-import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
+import java.rmi.*;
 
 /**
  *
  * @author Lucas
  */
+public class ServImpl {
+    
+    	public static void main(String args[]) {
+        System.setSecurityManager(new RMISecurityManager());
+        try {
+            //ShapeList aShapeList = new ShapeListServant();
+            //Naming.rebind("Shape List", aShapeList);
+            System.out.println("ShapeList server	ready");
+        } catch (Exception e) {
+            System.out.println("ShapeList server main" + e.getMessage());
+        }
+    }
 
+    
+}
