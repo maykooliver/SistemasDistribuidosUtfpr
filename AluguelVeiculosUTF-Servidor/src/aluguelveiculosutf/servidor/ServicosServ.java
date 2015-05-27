@@ -9,6 +9,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,12 +35,13 @@ public class ServicosServ {
             System.exit(0);
         }
     }
-    
-    
-    public ArrayList<Veiculo> listaVeiculo;
+   
+    public ArrayList<Veiculo> listaVeiculo = new ArrayList<>();
     
     public void salvarVeiculo(Veiculo veiculo){
         listaVeiculo.add(veiculo);
+        String msg = "Veículo cadastrado com sucesso!";
+        JOptionPane.showMessageDialog(null, msg);
     }
     
     public void editarVeiculo(int indice, Veiculo veiculo){
