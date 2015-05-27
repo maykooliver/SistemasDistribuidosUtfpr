@@ -36,9 +36,9 @@ public class PrincipalView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Locação");
+        jMenu1.setText("Cadastrar");
 
-        jMenuItem1.setText("Locar Veículo");
+        jMenuItem1.setText("Veículo");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
