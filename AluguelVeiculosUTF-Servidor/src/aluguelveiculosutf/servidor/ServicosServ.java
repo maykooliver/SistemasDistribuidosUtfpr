@@ -8,6 +8,7 @@ package aluguelveiculosutf.servidor;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.ArrayList;
 
 /**
  *
@@ -32,6 +33,17 @@ public class ServicosServ {
             System.out.println(e.getMessage());
             System.exit(0);
         }
+    }
+    
+    
+    public ArrayList<Veiculo> listaVeiculo;
+    
+    public void salvarVeiculo(Veiculo veiculo){
+        listaVeiculo.add(veiculo);
+    }
+    
+    public void editarVeiculo(int indice, Veiculo veiculo){
+        listaVeiculo.set(indice, veiculo);
     }
     
 }
