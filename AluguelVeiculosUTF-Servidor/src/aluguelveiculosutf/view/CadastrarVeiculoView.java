@@ -7,12 +7,15 @@ package aluguelveiculosutf.view;
 
 import aluguelveiculosutf.servidor.ServicosServ;
 import aluguelveiculosutf.servidor.Veiculo;
+import aluguelveiculosutf.util.MyNumber;
 
 /**
  *
  * @author Mayko
  */
 public class CadastrarVeiculoView extends javax.swing.JDialog {
+    
+    int id = 0;
 
     /**
      * Creates new form LocacaoVeiculo
@@ -140,7 +143,8 @@ public class CadastrarVeiculoView extends javax.swing.JDialog {
 
     private void cadastrarVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarVeiculoActionPerformed
         // TODO add your handling code here:
-        ServicosServ servico = new ServicosServ();
+        
+        ServicosServ servico = ServicosServ.getInstancia();
         
         Veiculo veiculo = new Veiculo();
         
@@ -152,29 +156,60 @@ public class CadastrarVeiculoView extends javax.swing.JDialog {
         System.out.println(veiculo.toString());
         
         servico.salvarVeiculo(veiculo);
+        
+        limparTela();
                 
     }//GEN-LAST:event_cadastrarVeiculoActionPerformed
 
+    public void limparTela(){
+        jtfModelo.setText("");
+        jtfMarca.setText("");
+        jtfAno.setText("");
+        jtfValorLocacao.setText("");
+    }
+    
     private void atualizarVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarVeiculoActionPerformed
         // TODO add your handling code here:
-        ServicosServ servico = new ServicosServ();
+        
+        ServicosServ servico = ServicosServ.getInstancia();
         
         Veiculo veiculo = new Veiculo();
-        
-        BuscaVeiculoView buscaVeiculo = new BuscaVeiculoView();
         
         veiculo.setModelo(jtfModelo.getText());
         veiculo.setMarca(jtfMarca.getText());
         veiculo.setAno(Integer.parseInt(jtfAno.getText()));
         veiculo.setValorLocacao(Double.parseDouble(jtfValorLocacao.getText()));
         
-        servico.editarVeiculo(buscaVeiculo.getId(), veiculo);
+        //System.out.println(veiculo.toString());
+        
+        servico.editarVeiculo(id, veiculo);
+        
+        limparTela();
+        
+        
     }//GEN-LAST:event_atualizarVeiculoActionPerformed
 
     private void atualizarVeiculo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarVeiculo1ActionPerformed
         // TODO add your handling code here:
         BuscaVeiculoView veiculos = new BuscaVeiculoView(null, true);
         veiculos.setVisible(true);
+        
+        ServicosServ servico = ServicosServ.getInstancia();
+        
+        Veiculo veiculo = new Veiculo();
+        
+        BuscaVeiculoView buscaVeiculo = new BuscaVeiculoView();
+        
+        jtfModelo.setEnabled(false);
+        jtfMarca.setEnabled(false);        
+        jtfAno.setEnabled(false);
+        
+        id = buscaVeiculo.getId();
+        
+        jtfModelo.setText(veiculo.getModelo());
+        jtfMarca.setText(veiculo.getMarca());
+        jtfAno.setText(MyNumber.parseString(veiculo.getAno()));
+        jtfValorLocacao.setText(MyNumber.parseString(veiculo.getValorLocacao()));
     }//GEN-LAST:event_atualizarVeiculo1ActionPerformed
 
     /**

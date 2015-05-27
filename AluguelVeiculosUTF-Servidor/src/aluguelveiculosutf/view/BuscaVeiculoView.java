@@ -4,6 +4,8 @@
  */
 package aluguelveiculosutf.view;
 
+import aluguelveiculosutf.servidor.ServicosServ;
+import aluguelveiculosutf.servidor.Veiculo;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -32,30 +34,30 @@ public class BuscaVeiculoView extends javax.swing.JDialog {
     
     private void carregaCabecalho(){
         Vector<String> col = new Vector();
-        col.add ("Código");
-        col.add ("Nome");
-        col.add ("CPF");
-        col.add ("UF");
-        col.add ("Município");
+        col.add ("Modelo");
+        col.add ("Marca");
+        col.add ("Ano");
+        col.add ("Valor Locação");
         model.setDataVector(null, col);
         carregaDados();
     }
     
     private void carregaDados(){
-//        SessionFactory sf = new AnnotationConfiguration().configure("hibernate.cfg.xml").buildSessionFactory();
-//        Session session = sf.openSession();
-//        List<Produtor>lista = session.createCriteria(Produtor.class).list();
-//        for (Produtor pro : lista) {
-//            //System.out.println(uf.getIduf() + " " + uf.getDescricao() + " " + uf.getSigla());
-//            model.addRow(new Object[]{
-//                pro.getIdprodutor(),
-//                pro.getNome(),
-//                pro.getCpf(),
-//                pro.getMunicipioIdmunicipio().getUfIduf(),
-//                pro.getMunicipioIdmunicipio()
-//                
-//            });
-//        }
+       
+        ServicosServ veiculos = ServicosServ.getInstancia();
+        int i = 0;
+        
+        for (Veiculo veiculo : veiculos.getListaVeiculo()) {
+            //System.out.println(uf.getIduf() + " " + uf.getDescricao() + " " + uf.getSigla());
+            model.addRow(new Object[]{
+                i,
+                veiculo.getModelo(),
+                veiculo.getMarca(),
+                veiculo.getAno(),
+                veiculo.getValorLocacao()
+                
+            });
+        }
     }
 
     /**
@@ -72,11 +74,9 @@ public class BuscaVeiculoView extends javax.swing.JDialog {
         OK = new javax.swing.JButton();
         CANCELAR = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jtfConsulta = new javax.swing.JTextField();
         OkCpf = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jtfConsulta1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -99,8 +99,6 @@ public class BuscaVeiculoView extends javax.swing.JDialog {
 
         jLabel1.setText("CONSULTAR VEÍCULO:");
 
-        jLabel2.setText("Valor Locação:");
-
         jtfConsulta.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jtfConsultaKeyReleased(evt);
@@ -115,12 +113,6 @@ public class BuscaVeiculoView extends javax.swing.JDialog {
         });
 
         jLabel3.setText("Modelo Veículo:");
-
-        jtfConsulta1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jtfConsulta1KeyReleased(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -142,13 +134,8 @@ public class BuscaVeiculoView extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtfConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
-                        .addGap(71, 71, 71)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jtfConsulta1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(OkCpf)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 218, Short.MAX_VALUE)
+                        .addComponent(OkCpf)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -156,18 +143,13 @@ public class BuscaVeiculoView extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(25, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(13, 13, 13)
+                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jtfConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(OkCpf)
-                            .addComponent(jtfConsulta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(OkCpf))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
@@ -260,10 +242,6 @@ public class BuscaVeiculoView extends javax.swing.JDialog {
 //        carregaDadosCpf(jtfCpf.getText());
     }//GEN-LAST:event_OkCpfActionPerformed
 
-    private void jtfConsulta1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfConsulta1KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfConsulta1KeyReleased
-
     /**
      * @param args the command line arguments
      */
@@ -321,11 +299,9 @@ public class BuscaVeiculoView extends javax.swing.JDialog {
     private javax.swing.JButton OK;
     private javax.swing.JButton OkCpf;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTbUf;
     private javax.swing.JTextField jtfConsulta;
-    private javax.swing.JTextField jtfConsulta1;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,6 +9,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,7 +18,9 @@ import javax.swing.JOptionPane;
  */
 public class ServicosServ {
     
-    public ServicosServ(){
+    private static ServicosServ instancia;
+    
+    private ServicosServ(){
             try{
             //Cria o registro para receber as referencias, para a porta 1099, local
             Registry referenciaServicoNome = LocateRegistry.createRegistry(1099);
@@ -37,6 +40,21 @@ public class ServicosServ {
     }
    
     public ArrayList<Veiculo> listaVeiculo = new ArrayList<>();
+
+    public ArrayList<Veiculo> getListaVeiculo() {
+        return listaVeiculo;
+    }
+
+    public void setListaVeiculo(ArrayList<Veiculo> listaVeiculo) {
+        this.listaVeiculo = listaVeiculo;
+    }       
+    
+    public static ServicosServ getInstancia(){
+        if (instancia == null){
+            instancia = new ServicosServ();
+        }
+        return instancia;
+    }
     
     public void salvarVeiculo(Veiculo veiculo){
         listaVeiculo.add(veiculo);
@@ -46,6 +64,22 @@ public class ServicosServ {
     
     public void editarVeiculo(int indice, Veiculo veiculo){
         listaVeiculo.set(indice, veiculo);
+    }
+    
+    public Veiculo buscarVeiculo(String modeloVeiculo){
+        Veiculo veiculo = null;
+        try{
+            veiculo = listaVeiculo.
+                    stream().
+                    filter(v -> (v.modelo == null ? modeloVeiculo == null :
+                            v.modelo.equals(modeloVeiculo))).
+                    findFirst().get();
+        }catch(NoSuchElementException e){
+            String msg = "Veículo não cadastrado!";
+            JOptionPane.showMessageDialog(null, msg);
+        }
+            
+            return veiculo;
     }
     
 }
