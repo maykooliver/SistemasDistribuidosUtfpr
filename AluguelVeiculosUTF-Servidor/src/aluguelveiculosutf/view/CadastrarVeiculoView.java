@@ -45,6 +45,7 @@ public class CadastrarVeiculoView extends javax.swing.JDialog {
         jtfValorLocacao = new javax.swing.JTextField();
         cadastrarVeiculo = new javax.swing.JButton();
         atualizarVeiculo = new javax.swing.JButton();
+        atualizarVeiculo1 = new javax.swing.JButton();
 
         jLabel3.setText("Modelo");
 
@@ -74,27 +75,36 @@ public class CadastrarVeiculoView extends javax.swing.JDialog {
             }
         });
 
+        atualizarVeiculo1.setText("Buscar");
+        atualizarVeiculo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atualizarVeiculo1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cadastrarVeiculo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(atualizarVeiculo))
+                        .addComponent(atualizarVeiculo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(atualizarVeiculo1))
                     .addComponent(jLabel6)
-                    .addComponent(jtfValorLocacao, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(jtfAno, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(jtfMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
-                    .addComponent(jtfModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                    .addComponent(jtfValorLocacao)
+                    .addComponent(jtfAno)
+                    .addComponent(jtfMarca)
+                    .addComponent(jtfModelo))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,7 +130,8 @@ public class CadastrarVeiculoView extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cadastrarVeiculo)
-                    .addComponent(atualizarVeiculo))
+                    .addComponent(atualizarVeiculo)
+                    .addComponent(atualizarVeiculo1))
                 .addContainerGap())
         );
 
@@ -159,6 +170,12 @@ public class CadastrarVeiculoView extends javax.swing.JDialog {
         
         servico.editarVeiculo(buscaVeiculo.getId(), veiculo);
     }//GEN-LAST:event_atualizarVeiculoActionPerformed
+
+    private void atualizarVeiculo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarVeiculo1ActionPerformed
+        // TODO add your handling code here:
+        BuscaVeiculoView veiculos = new BuscaVeiculoView(null, true);
+        veiculos.setVisible(true);
+    }//GEN-LAST:event_atualizarVeiculo1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,6 +228,7 @@ public class CadastrarVeiculoView extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atualizarVeiculo;
+    private javax.swing.JButton atualizarVeiculo1;
     private javax.swing.JButton cadastrarVeiculo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
