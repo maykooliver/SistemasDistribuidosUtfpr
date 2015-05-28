@@ -2,11 +2,14 @@ package aluguelveiculosutf.impl;
 
 import aluguelveiculosutf.interfaces.InterfaceCli;
 import aluguelveiculosutf.interfaces.InterfaceServ;
-import java.rmi.*;
+import aluguelveiculosutf.servidor.Interessado;
+import aluguelveiculosutf.servidor.Locador;
+import java.rmi.AlreadyBoundException;
+import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
-import javarmi.conta_bancaria.contas.MapContas;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,7 +17,9 @@ import javarmi.conta_bancaria.contas.MapContas;
  */
 public class ServImpl extends UnicastRemoteObject implements InterfaceServ{
     
-    public static MapContas contas;
+    public static ArrayList<Locador> contas;
+    public ArrayList<Locador> listaLocadores;
+    public ArrayList<Interessado> listaInteressados;
     
     /**
      * Implementação do servidor.
@@ -24,54 +29,56 @@ public class ServImpl extends UnicastRemoteObject implements InterfaceServ{
      */
     public ServImpl() throws RemoteException, AlreadyBoundException
     {
-        try{
+        listaLocadores = new ArrayList<>();
+        listaInteressados = new ArrayList<>();
+       try{
             //Cria o registro para receber as referencias, para a porta 1099, local
             Registry referenciaServicoNome = LocateRegistry.createRegistry(1099);
 
             //A classe é associada a um nome para ser acessado externamente
             //(Registra uma referencia de objeto remoto)
-            referenciaServicoNome.rebind("AluguelVeiculos", this);
+            referenciaServicoNome.rebind("Locacao de Veiculos", this);
 
-            //Inicia o mapa hash de contas
-            contas = new MapContas();
+            //Inicia o array de clientes.
+            contas = new ArrayList<>();
 
-            System.out.println("Sistema de aluguel de veículos iniciados...\n");
+            System.out.println("Serviços de locação de veículos iniciado..\n");
+            
         }catch(RemoteException e){
             System.out.println(e.getMessage());
             System.exit(0);
-        }
-        
-    }
-
-    @Override
-    public boolean criarConta(String nome, String senha, String numConta, String numAgencia, int banco, boolean poupanca, InterfaceCli ref) throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean validarUsuario(String numConta, String senhaCli, InterfaceCli ref) throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void devolverVeiculo(String nomeCli, String senhaCli, InterfaceCli ref) throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }        
     }
 
     @Override
     public boolean alugarVeic(String locRetirada, String locDevolucao, String dataIni, String dataTerm, String condutor, int idade, String numeroParcelas, InterfaceCli ref) throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //Bloquear veículo para locação (que ja deve estar bloqueado pela solicitaçãodo form) e popular os dados 
+        // da classe Locador e adicioná=lo ao array.
+        return true;
     }
 
     @Override
     public boolean regInteresseVeic(String modeloVeic, float valor, InterfaceCli ref) throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Interessado inter = new Interessado(modeloVeic, valor, ref);
+        listaInteressados.add(inter);
+        return true;
     }
 
     @Override
     public boolean solicitacaoFormLocacao(String modeloVeic, InterfaceCli ref) throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //Procurar aqui o veiculo no array e bloqueá-lo
+        return true;
     }
 
-    
+    @Override
+    public boolean devolverVeiculo(String nomeCli, InterfaceCli ref) throws RemoteException {
+        //desbloquear veículo para outras locações
+        return true;
+    }
+
+    @Override
+    public void novoClienteConectado(String nomeCli) throws RemoteException{
+        System.out.println("Novo cliente conectado: " + nomeCli);
+    }
+
 }

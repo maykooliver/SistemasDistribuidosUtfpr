@@ -1,44 +1,22 @@
 package aluguelveiculosutf.interfaces;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 /**
  *
  * @author Lucas
  */
-public interface InterfaceServ {
-    
-    /**
-     * Criar Conta.
-     * Cria a conta para um novo cliente.
-     * @param nome Nome do cliente.
-     * @param senha Senha do cliente.
-     * @param ref Referencia do cliente.
-     * @return True se a contar for criada com sucesso.
-     * @throws RemoteException 
-     */
-    public boolean criarConta(String nome, String senha, String numConta, String numAgencia, int banco, boolean poupanca, InterfaceCli ref) throws RemoteException;
-    
-    /**
-     * Validar usuário.
-     * Realiza a validação de um usuário no momento de devolução do carro.
-     * @param numConta Numero da conta do cliente.
-     * @param senhaCli Senha do cliente.
-     * @param ref Referencia do cliente.
-     * @return True se os dados estiverem corretos.
-     * @throws java.rmi.RemoteException
-     */
-    public boolean validarUsuario(String numConta, String senhaCli, InterfaceCli ref) throws RemoteException;
+public interface InterfaceServ extends Remote{
     
     /**
      * Devolver Veículo.
      * Realiza a solicitação para a devolução de um veículo.
      * @param nomeCli
-     * @param senhaCli
      * @param ref
      * @throws java.rmi.RemoteException
      */
-    public void devolverVeiculo(String nomeCli, String senhaCli, InterfaceCli ref) throws RemoteException;
+    public boolean devolverVeiculo(String nomeCli, InterfaceCli ref) throws RemoteException;
 
     /**
      * Alugar Veículo.
@@ -70,5 +48,12 @@ public interface InterfaceServ {
      * @return 
      */
     public boolean solicitacaoFormLocacao(String modeloVeic, InterfaceCli ref) throws RemoteException;
+    
+    /**
+     * Novo Cliente Conectado.
+     * Informa que um novo cliente se conectou ao servidor.
+     * @param nomeCli 
+     */
+    public void novoClienteConectado(String nomeCli) throws RemoteException;
     
 }

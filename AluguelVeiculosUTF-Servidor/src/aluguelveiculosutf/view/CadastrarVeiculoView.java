@@ -144,7 +144,6 @@ public class CadastrarVeiculoView extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cadastrarVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarVeiculoActionPerformed
-        // TODO add your handling code here:
         
         ServicosServ servico = ServicosServ.getInstancia();
         
@@ -159,8 +158,7 @@ public class CadastrarVeiculoView extends javax.swing.JDialog {
         
         servico.salvarVeiculo(veiculo);
         
-        limparTela();
-                
+        limparTela();        
     }//GEN-LAST:event_cadastrarVeiculoActionPerformed
 
     public void limparTela(){
@@ -171,11 +169,8 @@ public class CadastrarVeiculoView extends javax.swing.JDialog {
     }
     
     private void atualizarVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarVeiculoActionPerformed
-        // TODO add your handling code here:
         
         ServicosServ servico = ServicosServ.getInstancia();
-        
-        
         
         veiculo.setModelo(jtfModelo.getText());
         veiculo.setMarca(jtfMarca.getText());
@@ -192,11 +187,9 @@ public class CadastrarVeiculoView extends javax.swing.JDialog {
     }//GEN-LAST:event_atualizarVeiculoActionPerformed
 
     private void buscarVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarVeiculoActionPerformed
-        // TODO add your handling code here:
         BuscaVeiculoView buscaVeiculos = new BuscaVeiculoView(null, true);
         buscaVeiculos.setVisible(true);
-        
-        
+                
         jtfModelo.setEnabled(false);
         jtfMarca.setEnabled(false);        
         jtfAno.setEnabled(false);

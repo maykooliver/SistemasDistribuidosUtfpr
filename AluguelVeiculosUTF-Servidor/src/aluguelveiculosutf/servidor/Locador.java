@@ -5,13 +5,14 @@
  */
 package aluguelveiculosutf.servidor;
 
+import aluguelveiculosutf.interfaces.InterfaceCli;
 import java.util.Date;
 
 /**
  *
  * @author Lucas
  */
-public class Cliente {
+public class Locador {
     String localRetirada;
     String localDevolucao;
     Date dataInicio;
@@ -22,8 +23,10 @@ public class Cliente {
     int idadeCondutor;
     int parcelaPagamentoCartao;
     boolean receberNotificacao;
+    
+    private InterfaceCli refCli;
 
-    public Cliente() {
+    public Locador() {
     }
 
     public String getLocalRetirada() {
@@ -110,9 +113,19 @@ public class Cliente {
     public String toString() {
         return "Cliente{" + "localRetirada=" + localRetirada + ", localDevolucao=" + localDevolucao + ", dataInicio=" + dataInicio + ", horaInicio=" + horaInicio + ", dataFim=" + dataFim + ", horaFim=" + horaFim + ", nomeCondutor=" + nomeCondutor + ", idadeCondutor=" + idadeCondutor + ", parcelaPagamentoCartao=" + parcelaPagamentoCartao + ", receberNotificacao=" + receberNotificacao + '}';
     }
-    
-    
-    
-    
+
+    /**
+     * @return the refCli
+     */
+    public InterfaceCli getRefCli() {
+        return refCli;
+    }
+
+    /**
+     * @param refCli the refCli to set
+     */
+    public void setRefCli(InterfaceCli refCli) {
+        this.refCli = refCli;
+    }
     
 }

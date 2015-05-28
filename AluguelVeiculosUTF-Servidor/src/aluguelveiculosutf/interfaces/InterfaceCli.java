@@ -19,28 +19,4 @@ public interface InterfaceCli extends Remote{
      */
     public void notifCarroDisp(String msg) throws RemoteException;
     
-        /**
-     * Conta inexistente.
-     * Retorna uma mensagem informando que a conta não existe.
-     * Servidor - Cliente.
-     * @throws RemoteException 
-     */
-    public void contaInexistente() throws RemoteException;
-    
-    /**
-     * Senha incorreta.
-     * Retorna uma mensangem informando que a senha é incorreta.
-     * Servidor - Cliente.
-     * @throws RemoteException 
-     */
-    public void senhaIncorreta() throws RemoteException;
-    
-    /**
-     * Sucesso de Devolução de Veículo..
-     * Retorna uma mensangem informando que a senha é incorreta.
-     * Servidor - Cliente.
-     * @throws RemoteException 
-     */
-    public void sucessoDevolucaoVeic() throws RemoteException;
-    
 }

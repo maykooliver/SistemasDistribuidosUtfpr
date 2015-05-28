@@ -90,7 +90,7 @@ public class ConsultarCarros extends javax.swing.JFrame {
 
         jLabel3.setText("Preço desejado:");
 
-        precoDesejado.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
+        precoDesejado.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
 
         jLabel9.setText("Veículos para locação:");
 
@@ -101,22 +101,19 @@ public class ConsultarCarros extends javax.swing.JFrame {
         jInternalFrame1Layout.setHorizontalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
                         .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel7)))
-                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel1)))
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel1)
+                            .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel2)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
@@ -129,10 +126,6 @@ public class ConsultarCarros extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                         .addComponent(alugarVeiculo)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addGap(77, 77, 77))
         );
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,7 +155,7 @@ public class ConsultarCarros extends javax.swing.JFrame {
                     .addComponent(voltar)
                     .addComponent(registrarInteresse)
                     .addComponent(alugarVeiculo))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -191,19 +184,13 @@ public class ConsultarCarros extends javax.swing.JFrame {
         String modeloVeic = modeloVeiculo.getSelectedItem().toString();
         String preco = precoDesejado.getText();
         try{
-            float valor = Float.parseFloat(preco);
-            if(valor <= 0)
-            {
-                msg = "Por favor, preencha o preço desejado.";
-                JOptionPane.showMessageDialog(null, msg);
-            }else{
-                boolean ret = cliImpl.regInteresseVeic(modeloVeic, valor);
-                if(ret) msg = "Interesse em veículo registrado com sucesso!";
-                else msg = "Lamentamos, não foi possível registrar seus interesse pelo veículo.";
-                JOptionPane.showMessageDialog(null, msg);
-                this.setVisible(false);
-                this.dispose();
-            }
+            float valor =  Float.parseFloat(preco);
+            boolean ret = cliImpl.regInteresseVeic(modeloVeic, valor);
+            if(ret) msg = "Interesse em veículo registrado com sucesso!";
+            else msg = "Lamentamos, não foi possível registrar seus interesse pelo veículo.";
+            JOptionPane.showMessageDialog(null, msg);
+            this.setVisible(false);
+            this.dispose();
         }catch(Exception e){
             msg = "Por favor, informe dados válidos.";
             JOptionPane.showMessageDialog(null, msg);

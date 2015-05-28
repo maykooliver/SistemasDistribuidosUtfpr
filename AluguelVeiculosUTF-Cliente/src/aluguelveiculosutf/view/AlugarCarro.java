@@ -26,6 +26,8 @@ public class AlugarCarro extends javax.swing.JFrame {
         initComponents();
         cliImpl = cli;
         carroALocar = modeloVeiculo;
+        modeloCarro.setText(carroALocar);
+        modeloCarro.setEnabled(false);
     }
 
     /**
@@ -55,7 +57,7 @@ public class AlugarCarro extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         parcelas = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        modeloCarro = new javax.swing.JTextField();
         dataInicio = new javax.swing.JFormattedTextField();
         dataFim = new javax.swing.JFormattedTextField();
         horaFim = new javax.swing.JFormattedTextField();
@@ -105,7 +107,7 @@ public class AlugarCarro extends javax.swing.JFrame {
 
         jLabel1.setText("Carro a ser locado:");
 
-        jTextField2.setText(carroALocar);
+        modeloCarro.setText(carroALocar);
 
         dataInicio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
         dataInicio.addActionListener(new java.awt.event.ActionListener() {
@@ -176,7 +178,7 @@ public class AlugarCarro extends javax.swing.JFrame {
                         .addComponent(jLabel6))
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(modeloCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         jInternalFrame1Layout.setVerticalGroup(
@@ -187,7 +189,7 @@ public class AlugarCarro extends javax.swing.JFrame {
                 .addGap(11, 11, 11)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(modeloCarro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(2, 2, 2)
@@ -318,9 +320,9 @@ public class AlugarCarro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField localDevolucao;
     private javax.swing.JTextField localRetirada;
+    private javax.swing.JTextField modeloCarro;
     private javax.swing.JTextField nomeCondutor;
     private javax.swing.JComboBox parcelas;
     // End of variables declaration//GEN-END:variables

@@ -5,18 +5,35 @@
  */
 package aluguelveiculosutf.view;
 
+import aluguelveiculosutf.impl.ServImpl;
+import java.rmi.AlreadyBoundException;
+import java.rmi.RemoteException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Mayko
  */
 public class PrincipalView extends javax.swing.JFrame {
+    
+    public ServImpl servidor;
 
     /**
      * Creates new form NewJFrame
      */
     public PrincipalView() {
+        
+        try {
+            servidor = new ServImpl();
+        } catch (RemoteException ex) {
+            Logger.getLogger(PrincipalView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (AlreadyBoundException ex) {
+            Logger.getLogger(PrincipalView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         initComponents();
-        setExtendedState(MAXIMIZED_BOTH);
+        //setExtendedState(MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
     }
 
@@ -68,7 +85,6 @@ public class PrincipalView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
         CadastrarVeiculoView SubMenuPro = new CadastrarVeiculoView(this, true);
         SubMenuPro.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed

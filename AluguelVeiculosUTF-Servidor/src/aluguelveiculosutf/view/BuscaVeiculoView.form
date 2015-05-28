@@ -30,9 +30,9 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="OK" min="-2" max="-2" attributes="0"/>
+                              <Component id="confirmarConsulta" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="CANCELAR" min="-2" max="-2" attributes="0"/>
+                              <Component id="cancelar" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -40,11 +40,11 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jtfConsulta" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
+                          <Component id="modeloVeiculo" alignment="0" min="-2" pref="141" max="-2" attributes="0"/>
                           <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="218" max="32767" attributes="0"/>
-                      <Component id="OkCpf" min="-2" max="-2" attributes="0"/>
+                      <Component id="confirmarModelo" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -61,16 +61,16 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jtfConsulta" min="-2" max="-2" attributes="0"/>
+                      <Component id="modeloVeiculo" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="OkCpf" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="confirmarModelo" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="136" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="OK" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="CANCELAR" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="confirmarConsulta" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cancelar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -100,20 +100,20 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="OK">
+    <Component class="javax.swing.JButton" name="confirmarConsulta">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ok"/>
+        <Property name="text" type="java.lang.String" value="Confirmar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OKActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirmarConsultaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="CANCELAR">
+    <Component class="javax.swing.JButton" name="cancelar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CANCELARActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelarActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
@@ -121,18 +121,18 @@
         <Property name="text" type="java.lang.String" value="CONSULTAR VE&#xcd;CULO:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jtfConsulta">
+    <Component class="javax.swing.JTextField" name="modeloVeiculo">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfConsultaActionPerformed"/>
-        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfConsultaKeyReleased"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modeloVeiculoActionPerformed"/>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="modeloVeiculoKeyReleased"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="OkCpf">
+    <Component class="javax.swing.JButton" name="confirmarModelo">
       <Properties>
         <Property name="text" type="java.lang.String" value="OK"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OkCpfActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirmarModeloActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">

@@ -44,13 +44,13 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="consultarCarros" max="32767" attributes="0"/>
+                      <Component id="consultarCarros" pref="125" max="32767" attributes="0"/>
                       <Component id="devolverCarro" alignment="0" max="32767" attributes="0"/>
-                      <Component id="sair" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="sair" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="63" max="32767" attributes="0"/>
               </Group>

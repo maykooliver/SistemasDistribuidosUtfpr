@@ -17,29 +17,28 @@ import javax.swing.JOptionPane;
  * @author Lucas
  */
 public class ServicosServ {
-    
+
     private static ServicosServ instancia;
-    
+    public ArrayList<Veiculo> listaVeiculo;
+
+
     private ServicosServ(){
-            try{
+        listaVeiculo = new ArrayList<>();
+        try {
             //Cria o registro para receber as referencias, para a porta 1099, local
             Registry referenciaServicoNome = LocateRegistry.createRegistry(1099);
 
             //A classe é associada a um nome para ser acessado externamente
             //(Registra uma referencia de objeto remoto)
             //referenciaServicoNome.rebind("Conta Bancária", this);
-
             //Inicia o mapa hash de contas
             //contas = new MapContas();
-
             System.out.println("Serviços bancárias iniciados..\n");
-        }catch(RemoteException e){
+        } catch (RemoteException e) {
             System.out.println(e.getMessage());
             System.exit(0);
         }
     }
-   
-    public ArrayList<Veiculo> listaVeiculo = new ArrayList<>();
 
     public ArrayList<Veiculo> getListaVeiculo() {
         return listaVeiculo;
@@ -47,41 +46,41 @@ public class ServicosServ {
 
     public void setListaVeiculo(ArrayList<Veiculo> listaVeiculo) {
         this.listaVeiculo = listaVeiculo;
-    }       
-    
-    public static ServicosServ getInstancia(){
-        if (instancia == null){
+    }
+
+    public static ServicosServ getInstancia() {
+        if (instancia == null) {
             instancia = new ServicosServ();
         }
         return instancia;
     }
-    
-    public void salvarVeiculo(Veiculo veiculo){
+
+    public void salvarVeiculo(Veiculo veiculo) {
         listaVeiculo.add(veiculo);
         String msg = "Veículo cadastrado com sucesso!";
         JOptionPane.showMessageDialog(null, msg);
     }
-    
-    public void editarVeiculo(int indice, Veiculo veiculo){
+
+    public void editarVeiculo(int indice, Veiculo veiculo) {
         listaVeiculo.set(indice, veiculo);
-        String msg = "Veículo cadastrado com sucesso!";
+        String msg = "Veículo editado com sucesso!";
         JOptionPane.showMessageDialog(null, msg);
     }
-    
-    public Veiculo buscarVeiculo(String modeloVeiculo){
+
+    public Veiculo buscarVeiculo(String modeloVeiculo) {
         Veiculo veiculo = null;
-        try{
+        try {
             veiculo = listaVeiculo.
                     stream().
-                    filter(v -> (v.modelo == null ? modeloVeiculo == null :
-                            v.modelo.equals(modeloVeiculo))).
+                    filter(v -> (v.modelo == null ? modeloVeiculo == null
+                                    : v.modelo.equals(modeloVeiculo))).
                     findFirst().get();
-        }catch(NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             String msg = "Veículo não cadastrado!";
             JOptionPane.showMessageDialog(null, msg);
         }
-            
-            return veiculo;
+
+        return veiculo;
     }
-    
+
 }

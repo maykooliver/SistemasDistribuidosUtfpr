@@ -21,12 +21,6 @@ public class CriarConta extends javax.swing.JFrame{
 
     CliImpl cliImpl;
     String nomeCli;
-    String senhaCli;
-    String confirmSenhaCli;
-    boolean isPoupanca;
-    private String numConta;
-    private String numAgencia;
-    private int numBanco;
     
     /**
      * Creates new form CriarConta
@@ -56,19 +50,7 @@ public class CriarConta extends javax.swing.JFrame{
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         nome = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         Confirmar = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        senha = new javax.swing.JTextField();
-        confirmSenha = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        banco = new javax.swing.JComboBox();
-        jLabel8 = new javax.swing.JLabel();
-        numeroConta = new javax.swing.JFormattedTextField();
-        agencia = new javax.swing.JFormattedTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,9 +61,7 @@ public class CriarConta extends javax.swing.JFrame{
 
         jLabel2.setText("Nome:");
 
-        jLabel3.setText("Antes de acessar nosso sistema, por favor, informe seus dados ");
-
-        jLabel4.setText("Senha:");
+        jLabel3.setText("Antes de acessar nosso sistema, por favor, informe seus nome:");
 
         Confirmar.setText("Confirmar");
         Confirmar.addActionListener(new java.awt.event.ActionListener() {
@@ -89,30 +69,6 @@ public class CriarConta extends javax.swing.JFrame{
                 ConfirmarActionPerformed(evt);
             }
         });
-
-        jLabel5.setText("Confirmar senha:");
-
-        jLabel6.setText("Conta:");
-
-        jLabel7.setText("Banco:");
-
-        banco.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "104", "356", "477", "487" }));
-
-        jLabel8.setText("Agência:");
-
-        try {
-            numeroConta.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###-#")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        try {
-            agencia.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        jLabel9.setText("pessoais e bancários para facilitar a solicitação de nossos serviços:");
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
@@ -122,44 +78,21 @@ public class CriarConta extends javax.swing.JFrame{
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
                         .addGap(41, 41, 41)
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(30, 30, 30)
-                                .addComponent(banco, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9)
-                            .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jInternalFrame1Layout.createSequentialGroup()
-                                    .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jLabel5))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(confirmSenha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                                            .addComponent(senha, javax.swing.GroupLayout.Alignment.LEADING))
-                                        .addComponent(nome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                    .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(Confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                            .addComponent(jLabel6)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(numeroConta, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel8)))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(agencia, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                                        .addGap(70, 70, 70)
+                                        .addComponent(Confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
+                        .addGap(51, 51, 51)
                         .addComponent(jLabel1)))
                 .addGap(0, 46, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSeparator1)
-                .addContainerGap())
         );
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,37 +100,13 @@ public class CriarConta extends javax.swing.JFrame{
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addGap(4, 4, 4)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(24, 24, 24)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(confirmSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel8)
-                        .addComponent(agencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(numeroConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(banco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(Confirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -216,57 +125,22 @@ public class CriarConta extends javax.swing.JFrame{
 
     private void ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarActionPerformed
         nomeCli = nome.getText();
-        senhaCli = senha.getText();
-        confirmSenhaCli = confirmSenha.getText();
-        isPoupanca = false;
-        numConta = numeroConta.getText();
-        numAgencia = agencia.getText();
-        String bank = banco.getSelectedItem().toString();
-        numBanco = Integer.parseInt(bank);
-
-        if(nomeCli.equals("") || senhaCli.equals("") || confirmSenhaCli.equals("") ||
-            numConta.equals("   .   - ") || numAgencia.equals("   "))
+        
+        if(nomeCli.equals(""))
         {
-            String msg = "Por favor, preencha todos os campos.";
-            JOptionPane.showMessageDialog(null, msg);
-        }
-        else if(!senhaCli.equals(confirmSenhaCli))
-        {
-            String msg = "Senhas não correspondem, tente novamente.";
+            String msg = "Por favor, preencha seu nome.";
             JOptionPane.showMessageDialog(null, msg);
         }
         else
         {
             cliImpl.nomeCli = nomeCli;
-            cliImpl.senhaCli = senhaCli;
-            cliImpl.isPoupanca = isPoupanca;
-            cliImpl.numConta = numConta;
-            cliImpl.numAgencia = numAgencia;
-            cliImpl.banco = numBanco;
             System.out.println(nomeCli);
-            System.out.println(senhaCli);
+            
+            cliImpl.novoCliente();
 
-            boolean result = false;
-            try
-            {
-                result = cliImpl.criarConta();
-                if(!result)
-                {
-                    String msg = "Não foi possível criar sua conta, tente novamente.";
-                    JOptionPane.showMessageDialog(null, msg);
-                }
-                else
-                {
-                    this.setVisible(false);
-                    this.dispose();
-                    new OpcoesOperacoes(cliImpl).setVisible(true);
-                }
-
-            }
-            catch (RemoteException ex)
-            {
-                Logger.getLogger(CriarConta.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            this.setVisible(false);
+            this.dispose();
+            new OpcoesOperacoes(cliImpl).setVisible(true);
         }
     }//GEN-LAST:event_ConfirmarActionPerformed
 
@@ -282,23 +156,11 @@ public class CriarConta extends javax.swing.JFrame{
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Confirmar;
-    private javax.swing.JFormattedTextField agencia;
-    private javax.swing.JComboBox banco;
-    private javax.swing.JTextField confirmSenha;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField nome;
-    private javax.swing.JFormattedTextField numeroConta;
-    private javax.swing.JTextField senha;
     // End of variables declaration//GEN-END:variables
 
 }

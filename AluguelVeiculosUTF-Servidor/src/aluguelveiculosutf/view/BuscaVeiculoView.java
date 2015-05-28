@@ -56,7 +56,7 @@ public class BuscaVeiculoView extends javax.swing.JDialog {
         ServicosServ veiculos = ServicosServ.getInstancia();
         int i = 0;
         
-        for (Veiculo veiculo1 : veiculos.getListaVeiculo()) {
+        for(Veiculo veiculo1 : veiculos.getListaVeiculo()){
             //System.out.println(uf.getIduf() + " " + uf.getDescricao() + " " + uf.getSigla());
             model.addRow(new Object[]{
                 i + 1,
@@ -81,11 +81,11 @@ public class BuscaVeiculoView extends javax.swing.JDialog {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTbUf = new javax.swing.JTable();
-        OK = new javax.swing.JButton();
-        CANCELAR = new javax.swing.JButton();
+        confirmarConsulta = new javax.swing.JButton();
+        cancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jtfConsulta = new javax.swing.JTextField();
-        OkCpf = new javax.swing.JButton();
+        modeloVeiculo = new javax.swing.JTextField();
+        confirmarModelo = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -93,37 +93,37 @@ public class BuscaVeiculoView extends javax.swing.JDialog {
         jTbUf.setModel(model);
         jScrollPane1.setViewportView(jTbUf);
 
-        OK.setText("Ok");
-        OK.addActionListener(new java.awt.event.ActionListener() {
+        confirmarConsulta.setText("Confirmar");
+        confirmarConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OKActionPerformed(evt);
+                confirmarConsultaActionPerformed(evt);
             }
         });
 
-        CANCELAR.setText("Cancelar");
-        CANCELAR.addActionListener(new java.awt.event.ActionListener() {
+        cancelar.setText("Cancelar");
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CANCELARActionPerformed(evt);
+                cancelarActionPerformed(evt);
             }
         });
 
         jLabel1.setText("CONSULTAR VEÍCULO:");
 
-        jtfConsulta.addActionListener(new java.awt.event.ActionListener() {
+        modeloVeiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfConsultaActionPerformed(evt);
+                modeloVeiculoActionPerformed(evt);
             }
         });
-        jtfConsulta.addKeyListener(new java.awt.event.KeyAdapter() {
+        modeloVeiculo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jtfConsultaKeyReleased(evt);
+                modeloVeiculoKeyReleased(evt);
             }
         });
 
-        OkCpf.setText("OK");
-        OkCpf.addActionListener(new java.awt.event.ActionListener() {
+        confirmarModelo.setText("OK");
+        confirmarModelo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OkCpfActionPerformed(evt);
+                confirmarModeloActionPerformed(evt);
             }
         });
 
@@ -140,17 +140,17 @@ public class BuscaVeiculoView extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(OK)
+                                .addComponent(confirmarConsulta)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(CANCELAR))
+                                .addComponent(cancelar))
                             .addComponent(jLabel1))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(modeloVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 218, Short.MAX_VALUE)
-                        .addComponent(OkCpf)))
+                        .addComponent(confirmarModelo)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -163,27 +163,27 @@ public class BuscaVeiculoView extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtfConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(OkCpf))
+                        .addComponent(modeloVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(confirmarModelo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(OK)
-                    .addComponent(CANCELAR))
+                    .addComponent(confirmarConsulta)
+                    .addComponent(cancelar))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKActionPerformed
+    private void confirmarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarConsultaActionPerformed
         // TODO add your handling code here:
         
         id = MyNumber.parseInt(model.getValueAt(jTbUf.getSelectedRow(), 0));
         System.out.println(id);
         dispose();
-    }//GEN-LAST:event_OKActionPerformed
+    }//GEN-LAST:event_confirmarConsultaActionPerformed
 
     public Integer getId(){
         return id;
@@ -191,14 +191,14 @@ public class BuscaVeiculoView extends javax.swing.JDialog {
     
     
     
-    private void CANCELARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CANCELARActionPerformed
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         // TODO add your handling code here:
         id = 0;
         dispose();
-    }//GEN-LAST:event_CANCELARActionPerformed
+    }//GEN-LAST:event_cancelarActionPerformed
 
     public void Limpar() {
-        jtfConsulta.setText("");
+        modeloVeiculo.setText("");
 //        jtfCpf.setValue(null);
         int contRow = model.getRowCount();
         for (int i = 0; i < contRow; i++) {
@@ -226,18 +226,18 @@ public class BuscaVeiculoView extends javax.swing.JDialog {
         });
     }
     
-    private void jtfConsultaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfConsultaKeyReleased
+    private void modeloVeiculoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_modeloVeiculoKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtfConsultaKeyReleased
+    }//GEN-LAST:event_modeloVeiculoKeyReleased
 
-    private void OkCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkCpfActionPerformed
+    private void confirmarModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarModeloActionPerformed
         // TODO add your handling code here:
-        carregaDados(jtfConsulta.getText());
-    }//GEN-LAST:event_OkCpfActionPerformed
+        carregaDados(modeloVeiculo.getText());
+    }//GEN-LAST:event_confirmarModeloActionPerformed
 
-    private void jtfConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfConsultaActionPerformed
+    private void modeloVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modeloVeiculoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jtfConsultaActionPerformed
+    }//GEN-LAST:event_modeloVeiculoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -292,13 +292,13 @@ public class BuscaVeiculoView extends javax.swing.JDialog {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CANCELAR;
-    private javax.swing.JButton OK;
-    private javax.swing.JButton OkCpf;
+    private javax.swing.JButton cancelar;
+    private javax.swing.JButton confirmarConsulta;
+    private javax.swing.JButton confirmarModelo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTbUf;
-    private javax.swing.JTextField jtfConsulta;
+    private javax.swing.JTextField modeloVeiculo;
     // End of variables declaration//GEN-END:variables
 }

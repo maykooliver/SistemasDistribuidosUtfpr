@@ -39,21 +39,13 @@ public class DevolverCarro extends javax.swing.JFrame {
     private void initComponents() {
 
         jInternalFrame1 = new javax.swing.JInternalFrame();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         confirmar = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        senha = new javax.swing.JTextField();
-        nome = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jInternalFrame1.setVisible(true);
-
-        jLabel1.setText("Nome:");
-
-        jLabel2.setText("Senha:");
 
         confirmar.setText("Confirmar");
         confirmar.addActionListener(new java.awt.event.ActionListener() {
@@ -70,7 +62,7 @@ public class DevolverCarro extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setText("Para devolver o veículo, confime seus dados");
+        jLabel3.setText("Realmente deseja devolver o carro?");
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
@@ -82,20 +74,11 @@ public class DevolverCarro extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel3))
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGap(18, 18, 18)
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nome, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-                            .addComponent(senha)))
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
+                        .addGap(40, 40, 40)
                         .addComponent(cancelar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(confirmar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,28 +87,20 @@ public class DevolverCarro extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelar)
                     .addComponent(confirmar))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jInternalFrame1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jInternalFrame1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -139,31 +114,26 @@ public class DevolverCarro extends javax.swing.JFrame {
 
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_confirmarActionPerformed
     {//GEN-HEADEREND:event_confirmarActionPerformed
-        cliImpl.nomeCli = nome.getText();
-        cliImpl.senhaCli = senha.getText();
-        if(cliImpl.nomeCli.equals("") || cliImpl.senhaCli.equals(""))
-        {
-            String msg = "Por favor, preencha todos os campos.";
-            JOptionPane.showMessageDialog(null, msg);
-        }
-        else
-        {
-            try {
-                cliImpl.devolverVeiculo();
-            } catch (RemoteException ex) {
-                Logger.getLogger(DevolverCarro.class.getName()).log(Level.SEVERE, null, ex);
+        try {
+            String msg;
+            boolean ret = cliImpl.devolverVeiculo();
+            if(!ret){
+                msg = "Não foi possível devolver veículo.";
+            }else{
+                msg = "Veículo devolvido com sucesso! Volte sempre.";
             }
+            JOptionPane.showMessageDialog(null, msg);
+        } catch (RemoteException ex) {
+            Logger.getLogger(DevolverCarro.class.getName()).log(Level.SEVERE, null, ex);
         }
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_confirmarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelar;
     private javax.swing.JButton confirmar;
     private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField nome;
-    private javax.swing.JTextField senha;
     // End of variables declaration//GEN-END:variables
 }
