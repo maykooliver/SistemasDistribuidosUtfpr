@@ -6,6 +6,7 @@ package aluguelveiculosutf.view;
 
 import aluguelveiculosutf.servidor.ServicosServ;
 import aluguelveiculosutf.servidor.Veiculo;
+import aluguelveiculosutf.util.MyNumber;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -16,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 public class BuscaVeiculoView extends javax.swing.JDialog {
     DefaultTableModel model = new DefaultTableModel();
     Integer id = 0;
+    Veiculo veiculo = null;
 
     /**
      * Creates new form tabela
@@ -31,9 +33,16 @@ public class BuscaVeiculoView extends javax.swing.JDialog {
     BuscaVeiculoView() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public Veiculo getVeiculo() {
+        return veiculo;
+    }
+    
+    
     
     private void carregaCabecalho(){
         Vector<String> col = new Vector();
+        col.add ("Id");
         col.add ("Modelo");
         col.add ("Marca");
         col.add ("Ano");
@@ -47,16 +56,17 @@ public class BuscaVeiculoView extends javax.swing.JDialog {
         ServicosServ veiculos = ServicosServ.getInstancia();
         int i = 0;
         
-        for (Veiculo veiculo : veiculos.getListaVeiculo()) {
+        for (Veiculo veiculo1 : veiculos.getListaVeiculo()) {
             //System.out.println(uf.getIduf() + " " + uf.getDescricao() + " " + uf.getSigla());
             model.addRow(new Object[]{
-                i,
-                veiculo.getModelo(),
-                veiculo.getMarca(),
-                veiculo.getAno(),
-                veiculo.getValorLocacao()
+                i + 1,
+                veiculo1.getModelo(),
+                veiculo1.getMarca(),
+                veiculo1.getAno(),
+                veiculo1.getValorLocacao()
                 
             });
+            i++;
         }
     }
 
@@ -99,6 +109,11 @@ public class BuscaVeiculoView extends javax.swing.JDialog {
 
         jLabel1.setText("CONSULTAR VEÍCULO:");
 
+        jtfConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfConsultaActionPerformed(evt);
+            }
+        });
         jtfConsulta.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jtfConsultaKeyReleased(evt);
@@ -164,8 +179,9 @@ public class BuscaVeiculoView extends javax.swing.JDialog {
 
     private void OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKActionPerformed
         // TODO add your handling code here:
-//        id = MyNumber.parseInt(model.getValueAt(jTbUf.getSelectedRow(), 0));
-        //System.out.println(id);
+        
+        id = MyNumber.parseInt(model.getValueAt(jTbUf.getSelectedRow(), 0));
+        System.out.println(id);
         dispose();
     }//GEN-LAST:event_OKActionPerformed
 
@@ -192,55 +208,36 @@ public class BuscaVeiculoView extends javax.swing.JDialog {
         //Retirar = 0;
     }
     
-    private void carregaDados(String nome){
-//        Limpar();
-//        nome = nome.toUpperCase();
-//        Session session = HibernateUtil.getSession();
-//        //Query q = session.createQuery("from Aluno a where a.nome = ?");
-//        Query q = session.createQuery("from Produtor p where upper(p.nome) like ?");
-//        q.setString(0,"%" + nome + "%");
-//        //q.setString(0, nome);
-//        List<Produtor> list = q.list();
-//        for (Produtor produtor : list) {
-//            model.addRow(new Object[]{
-//                produtor.getIdprodutor(),
-//                produtor.getNome(),
-//                produtor.getCpf(),
-//                produtor.getMunicipioIdmunicipio().getUfIduf(),
-//                produtor.getMunicipioIdmunicipio()                
-//            });
-//        }
-    }
-    
-    private void carregaDadosCpf(String cpf){
+    private void carregaDados(String nomeVeiculo){
         Limpar();
-        //ra = ra.toUpperCase();
-//        Session session = HibernateUtil.getSession();
-//        Query q = session.createQuery("from Produtor p where p.cpf = ?");
-//        //Query q = session.createQuery("from Aluno a where a.ra like ?");
-//        //q.setString(0,"%" + ra + "%");
-//        q.setString(0, cpf);
-//        List<Produtor> list = q.list();
-//        for (Produtor produtor : list) {
-//            model.addRow(new Object[]{
-//                produtor.getIdprodutor(),
-//                produtor.getNome(),
-//                produtor.getCpf(),                
-//                produtor.getMunicipioIdmunicipio().getUfIduf(),
-//                produtor.getMunicipioIdmunicipio()
-//            });
-//        }
+        ServicosServ buscaVeiculos = ServicosServ.getInstancia();
+        int i = 0;
+        
+        veiculo = buscaVeiculos.buscarVeiculo(nomeVeiculo);
+        
+        
+        model.addRow(new Object[]{
+            i + 1,
+            veiculo.getModelo(),
+            veiculo.getMarca(),
+            veiculo.getAno(),
+            veiculo.getValorLocacao()
+
+        });
     }
     
     private void jtfConsultaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfConsultaKeyReleased
         // TODO add your handling code here:
-        carregaDados(jtfConsulta.getText());
     }//GEN-LAST:event_jtfConsultaKeyReleased
 
     private void OkCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkCpfActionPerformed
         // TODO add your handling code here:
-//        carregaDadosCpf(jtfCpf.getText());
+        carregaDados(jtfConsulta.getText());
     }//GEN-LAST:event_OkCpfActionPerformed
+
+    private void jtfConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfConsultaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfConsultaActionPerformed
 
     /**
      * @param args the command line arguments

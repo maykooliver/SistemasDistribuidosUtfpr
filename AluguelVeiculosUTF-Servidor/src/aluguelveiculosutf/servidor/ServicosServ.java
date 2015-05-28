@@ -64,6 +64,8 @@ public class ServicosServ {
     
     public void editarVeiculo(int indice, Veiculo veiculo){
         listaVeiculo.set(indice, veiculo);
+        String msg = "Veículo cadastrado com sucesso!";
+        JOptionPane.showMessageDialog(null, msg);
     }
     
     public Veiculo buscarVeiculo(String modeloVeiculo){

@@ -123,6 +123,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jtfConsulta">
       <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfConsultaActionPerformed"/>
         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfConsultaKeyReleased"/>
       </Events>
     </Component>

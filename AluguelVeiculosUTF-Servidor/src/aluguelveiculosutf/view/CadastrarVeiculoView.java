@@ -16,6 +16,8 @@ import aluguelveiculosutf.util.MyNumber;
 public class CadastrarVeiculoView extends javax.swing.JDialog {
     
     int id = 0;
+    
+    Veiculo veiculo = new Veiculo();
 
     /**
      * Creates new form LocacaoVeiculo
@@ -48,7 +50,7 @@ public class CadastrarVeiculoView extends javax.swing.JDialog {
         jtfValorLocacao = new javax.swing.JTextField();
         cadastrarVeiculo = new javax.swing.JButton();
         atualizarVeiculo = new javax.swing.JButton();
-        atualizarVeiculo1 = new javax.swing.JButton();
+        buscarVeiculo = new javax.swing.JButton();
 
         jLabel3.setText("Modelo");
 
@@ -78,10 +80,10 @@ public class CadastrarVeiculoView extends javax.swing.JDialog {
             }
         });
 
-        atualizarVeiculo1.setText("Buscar");
-        atualizarVeiculo1.addActionListener(new java.awt.event.ActionListener() {
+        buscarVeiculo.setText("Buscar");
+        buscarVeiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                atualizarVeiculo1ActionPerformed(evt);
+                buscarVeiculoActionPerformed(evt);
             }
         });
 
@@ -97,7 +99,7 @@ public class CadastrarVeiculoView extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(atualizarVeiculo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(atualizarVeiculo1))
+                        .addComponent(buscarVeiculo))
                     .addComponent(jLabel6)
                     .addComponent(jLabel5)
                     .addComponent(jLabel4)
@@ -134,7 +136,7 @@ public class CadastrarVeiculoView extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cadastrarVeiculo)
                     .addComponent(atualizarVeiculo)
-                    .addComponent(atualizarVeiculo1))
+                    .addComponent(buscarVeiculo))
                 .addContainerGap())
         );
 
@@ -146,7 +148,7 @@ public class CadastrarVeiculoView extends javax.swing.JDialog {
         
         ServicosServ servico = ServicosServ.getInstancia();
         
-        Veiculo veiculo = new Veiculo();
+        //Veiculo veiculo = new Veiculo();
         
         veiculo.setModelo(jtfModelo.getText());
         veiculo.setMarca(jtfMarca.getText());
@@ -173,7 +175,7 @@ public class CadastrarVeiculoView extends javax.swing.JDialog {
         
         ServicosServ servico = ServicosServ.getInstancia();
         
-        Veiculo veiculo = new Veiculo();
+        
         
         veiculo.setModelo(jtfModelo.getText());
         veiculo.setMarca(jtfMarca.getText());
@@ -189,28 +191,25 @@ public class CadastrarVeiculoView extends javax.swing.JDialog {
         
     }//GEN-LAST:event_atualizarVeiculoActionPerformed
 
-    private void atualizarVeiculo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarVeiculo1ActionPerformed
+    private void buscarVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarVeiculoActionPerformed
         // TODO add your handling code here:
-        BuscaVeiculoView veiculos = new BuscaVeiculoView(null, true);
-        veiculos.setVisible(true);
+        BuscaVeiculoView buscaVeiculos = new BuscaVeiculoView(null, true);
+        buscaVeiculos.setVisible(true);
         
-        ServicosServ servico = ServicosServ.getInstancia();
-        
-        Veiculo veiculo = new Veiculo();
-        
-        BuscaVeiculoView buscaVeiculo = new BuscaVeiculoView();
         
         jtfModelo.setEnabled(false);
         jtfMarca.setEnabled(false);        
         jtfAno.setEnabled(false);
         
-        id = buscaVeiculo.getId();
+        id = buscaVeiculos.getId();
         
-        jtfModelo.setText(veiculo.getModelo());
-        jtfMarca.setText(veiculo.getMarca());
+        veiculo = buscaVeiculos.getVeiculo();
+        System.out.println(veiculo.toString());
+        jtfModelo.setText(MyNumber.parseString(veiculo.getModelo()));
+        jtfMarca.setText(MyNumber.parseString(veiculo.getMarca()));
         jtfAno.setText(MyNumber.parseString(veiculo.getAno()));
         jtfValorLocacao.setText(MyNumber.parseString(veiculo.getValorLocacao()));
-    }//GEN-LAST:event_atualizarVeiculo1ActionPerformed
+    }//GEN-LAST:event_buscarVeiculoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,7 +262,7 @@ public class CadastrarVeiculoView extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atualizarVeiculo;
-    private javax.swing.JButton atualizarVeiculo1;
+    private javax.swing.JButton buscarVeiculo;
     private javax.swing.JButton cadastrarVeiculo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
