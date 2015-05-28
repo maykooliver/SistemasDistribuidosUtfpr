@@ -7,7 +7,6 @@ package aluguelveiculosutf.view;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import aluguelveiculosutf.impl.CliImpl;
@@ -60,7 +59,6 @@ public class CriarConta extends javax.swing.JFrame{
         jLabel4 = new javax.swing.JLabel();
         Confirmar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        poupanca = new javax.swing.JCheckBox();
         senha = new javax.swing.JTextField();
         confirmSenha = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -93,8 +91,6 @@ public class CriarConta extends javax.swing.JFrame{
         });
 
         jLabel5.setText("Confirmar senha:");
-
-        poupanca.setText("Poupança?");
 
         jLabel6.setText("Conta:");
 
@@ -141,11 +137,9 @@ public class CriarConta extends javax.swing.JFrame{
                                         .addComponent(jLabel5))
                                     .addGap(18, 18, 18)
                                     .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(confirmSenha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                                                .addComponent(senha, javax.swing.GroupLayout.Alignment.LEADING))
-                                            .addComponent(poupanca))
+                                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(confirmSenha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                                            .addComponent(senha, javax.swing.GroupLayout.Alignment.LEADING))
                                         .addComponent(nome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(jInternalFrame1Layout.createSequentialGroup()
                                     .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -189,7 +183,7 @@ public class CriarConta extends javax.swing.JFrame{
                     .addComponent(confirmSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel8)
@@ -199,7 +193,6 @@ public class CriarConta extends javax.swing.JFrame{
                         .addComponent(numeroConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(poupanca)
                     .addComponent(jLabel7)
                     .addComponent(banco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -225,7 +218,7 @@ public class CriarConta extends javax.swing.JFrame{
         nomeCli = nome.getText();
         senhaCli = senha.getText();
         confirmSenhaCli = confirmSenha.getText();
-        isPoupanca = poupanca.isSelected();
+        isPoupanca = false;
         numConta = numeroConta.getText();
         numAgencia = agencia.getText();
         String bank = banco.getSelectedItem().toString();
@@ -305,7 +298,6 @@ public class CriarConta extends javax.swing.JFrame{
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField nome;
     private javax.swing.JFormattedTextField numeroConta;
-    private javax.swing.JCheckBox poupanca;
     private javax.swing.JTextField senha;
     // End of variables declaration//GEN-END:variables
 

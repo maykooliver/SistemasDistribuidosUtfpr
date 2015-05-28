@@ -7,6 +7,8 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import aluguelveiculosutf.interfaces.InterfaceCli;
 import aluguelveiculosutf.interfaces.InterfaceServ;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -41,10 +43,11 @@ public class CliImpl extends UnicastRemoteObject implements InterfaceCli
         carroAlugado = false;
         numCarroAlug = 0;
         Registry referenciaServicoNomes;
-        referenciaServicoNomes = LocateRegistry.getRegistry("localhost", 1099);
+        referenciaServicoNomes = LocateRegistry.getRegistry(1099);
         try
         {
-            refServ = (InterfaceServ) referenciaServicoNomes.lookup("Aluguel de Veiculos - UTFPR");
+            System.out.println(referenciaServicoNomes.lookup("AluguelVeiculos"));
+            refServ = (InterfaceServ) referenciaServicoNomes.lookup("AluguelVeiculos");
         }catch(RemoteException e){
             System.out.println(e.getMessage());
             String msg = "Servidor fora do ar!";
@@ -163,8 +166,13 @@ public class CliImpl extends UnicastRemoteObject implements InterfaceCli
      * @param numeroParcelas
      * @return 
      */
-    public boolean alugarVeic(String locRetirada, String locDevolucao, String dataIni, String dataTerm, String condutor, int idade, String numeroParcelas) {
-        boolean ret = refServ.alugarVeic(locRetirada, locDevolucao, dataIni, dataTerm, condutor, idade, numeroParcelas, this);
+    public boolean alugarVeic(String locRetirada, String locDevolucao, String dataIni, String dataTerm, String condutor, int idade, String numeroParcelas){
+        boolean ret = false;
+        try {
+            ret = refServ.alugarVeic(locRetirada, locDevolucao, dataIni, dataTerm, condutor, idade, numeroParcelas, this);
+        } catch (RemoteException ex) {
+            Logger.getLogger(CliImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return ret;
     }
 
@@ -175,8 +183,13 @@ public class CliImpl extends UnicastRemoteObject implements InterfaceCli
      * @param valor
      * @return 
      */
-    public boolean regInteresseVeic(String modeloVeic, float valor) {
-        boolean ret = refServ.regInteresseVeic(modeloVeic, valor, this);
+    public boolean regInteresseVeic(String modeloVeic, float valor){
+        boolean ret = false;
+        try {
+            ret = refServ.regInteresseVeic(modeloVeic, valor, this);
+        } catch (RemoteException ex) {
+            Logger.getLogger(CliImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return ret;
     }
 
@@ -186,8 +199,13 @@ public class CliImpl extends UnicastRemoteObject implements InterfaceCli
      * @param modeloVeic
      * @return 
      */
-    public boolean solicitacaoFormLocacao(String modeloVeic) {
-        boolean ret = refServ.solicitacaoFormLocacao(modeloVeic, this);
+    public boolean solicitacaoFormLocacao(String modeloVeic){
+        boolean ret = false;
+        try {
+            ret = refServ.solicitacaoFormLocacao(modeloVeic, this);
+        } catch (RemoteException ex) {
+            Logger.getLogger(CliImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return ret;
     }
     

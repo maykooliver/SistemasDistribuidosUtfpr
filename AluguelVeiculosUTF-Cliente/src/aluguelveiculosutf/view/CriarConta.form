@@ -62,12 +62,9 @@
                                       </Group>
                                       <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="confirmSenha" alignment="0" pref="230" max="32767" attributes="0"/>
-                                                  <Component id="senha" alignment="0" max="32767" attributes="0"/>
-                                              </Group>
-                                              <Component id="poupanca" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="confirmSenha" alignment="0" pref="230" max="32767" attributes="0"/>
+                                              <Component id="senha" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                           <Component id="nome" alignment="1" min="-2" pref="230" max="-2" attributes="0"/>
                                       </Group>
@@ -128,7 +125,7 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="12" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -141,7 +138,6 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="poupanca" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="banco" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -189,11 +185,6 @@
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="text" type="java.lang.String" value="Confirmar senha:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="poupanca">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Poupan&#xe7;a?"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="senha">

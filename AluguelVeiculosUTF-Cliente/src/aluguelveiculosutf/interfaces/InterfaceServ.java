@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aluguelveiculosutf.interfaces;
 
-import aluguelveiculosutf.impl.CliImpl;
 import java.rmi.RemoteException;
 
 /**
@@ -55,26 +49,26 @@ public interface InterfaceServ {
      * @param condutor
      * @param idade
      * @param numeroParcelas
-     * @param aThis
+     * @param ref
      * @return 
      */
-    public boolean alugarVeic(String locRetirada, String locDevolucao, String dataIni, String dataTerm, String condutor, int idade, String numeroParcelas, CliImpl aThis);
+    public boolean alugarVeic(String locRetirada, String locDevolucao, String dataIni, String dataTerm, String condutor, int idade, String numeroParcelas, InterfaceCli ref) throws RemoteException;
 
     /**
      * Registrar Interesse de Veículo.
      * @param modeloVeic
      * @param valor
-     * @param aThis
+     * @param ref
      * @return 
      */
-    public boolean regInteresseVeic(String modeloVeic, float valor, CliImpl aThis);
+    public boolean regInteresseVeic(String modeloVeic, float valor, InterfaceCli ref) throws RemoteException;
 
     /**
      * Solicitar Formulário de Locação.
      * @param modeloVeic
-     * @param aThis
+     * @param ref
      * @return 
      */
-    public boolean solicitacaoFormLocacao(String modeloVeic, CliImpl aThis);
+    public boolean solicitacaoFormLocacao(String modeloVeic, InterfaceCli ref) throws RemoteException;
     
 }
