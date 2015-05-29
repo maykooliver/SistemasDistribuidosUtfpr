@@ -24,20 +24,20 @@ public class ServicosServ {
 
     private ServicosServ(){
         listaVeiculo = new ArrayList<>();
-        try {
-            //Cria o registro para receber as referencias, para a porta 1099, local
-            Registry referenciaServicoNome = LocateRegistry.createRegistry(1099);
-
-            //A classe é associada a um nome para ser acessado externamente
-            //(Registra uma referencia de objeto remoto)
-            //referenciaServicoNome.rebind("Conta Bancária", this);
-            //Inicia o mapa hash de contas
-            //contas = new MapContas();
-            System.out.println("Serviços bancárias iniciados..\n");
-        } catch (RemoteException e) {
-            System.out.println(e.getMessage());
-            System.exit(0);
-        }
+//        try {
+//            //Cria o registro para receber as referencias, para a porta 1099, local
+//            Registry referenciaServicoNome = LocateRegistry.createRegistry(1099);
+//
+//            //A classe é associada a um nome para ser acessado externamente
+//            //(Registra uma referencia de objeto remoto)
+//            //referenciaServicoNome.rebind("Conta Bancária", this);
+//            //Inicia o mapa hash de contas
+//            //contas = new MapContas();
+//            System.out.println("Serviços bancárias iniciados..\n");
+//        } catch (RemoteException e) {
+//            System.out.println(e.getMessage());
+//            System.exit(0);
+//        }
     }
 
     public ArrayList<Veiculo> getListaVeiculo() {
@@ -82,5 +82,21 @@ public class ServicosServ {
 
         return veiculo;
     }
+    
+//    public Veiculo buscarVeiculo(int id) {
+//        Veiculo veiculo = null;
+//        try {
+//            veiculo = listaVeiculo.
+//                    stream().
+//                    filter(v -> (v.hashCode() == 0 ? id == 0
+//                                    : v.hashCode() == id)).
+//                    findFirst().get();
+//        } catch (NoSuchElementException e) {
+//            String msg = "Veículo não cadastrado!";
+//            JOptionPane.showMessageDialog(null, msg);
+//        }
+//
+//        return veiculo;
+//    }
 
 }

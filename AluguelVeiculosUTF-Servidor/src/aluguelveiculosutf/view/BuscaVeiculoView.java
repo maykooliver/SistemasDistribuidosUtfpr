@@ -9,6 +9,7 @@ import aluguelveiculosutf.servidor.Veiculo;
 import aluguelveiculosutf.util.MyNumber;
 import java.util.List;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -16,8 +17,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class BuscaVeiculoView extends javax.swing.JDialog {
     DefaultTableModel model = new DefaultTableModel();
-    Integer id = 0;
+    Integer id = -1;
     Veiculo veiculo = null;
+    ServicosServ todosVeiculos = ServicosServ.getInstancia();
 
     /**
      * Creates new form tabela
@@ -53,13 +55,12 @@ public class BuscaVeiculoView extends javax.swing.JDialog {
     
     private void carregaDados(){
        
-        ServicosServ veiculos = ServicosServ.getInstancia();
+        
         int i = 0;
         
-        for(Veiculo veiculo1 : veiculos.getListaVeiculo()){
-            //System.out.println(uf.getIduf() + " " + uf.getDescricao() + " " + uf.getSigla());
+        for(Veiculo veiculo1 : todosVeiculos.getListaVeiculo()){
             model.addRow(new Object[]{
-                i + 1,
+                i,
                 veiculo1.getModelo(),
                 veiculo1.getMarca(),
                 veiculo1.getAno(),
@@ -179,10 +180,19 @@ public class BuscaVeiculoView extends javax.swing.JDialog {
 
     private void confirmarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarConsultaActionPerformed
         // TODO add your handling code here:
-        
-        id = MyNumber.parseInt(model.getValueAt(jTbUf.getSelectedRow(), 0));
-        System.out.println(id);
-        dispose();
+        if(veiculo == null){
+            String msg = "É necessário buscar o veículo!";
+            JOptionPane.showMessageDialog(null, msg);
+        }else{
+            try {
+                id = MyNumber.parseInt(model.getValueAt(jTbUf.getSelectedRow(), 0));
+                System.out.println(id);
+                dispose();
+            } catch (Exception e) {
+                String msg = "Linha não selecionada!";
+                JOptionPane.showMessageDialog(null, msg);
+            }
+        }
     }//GEN-LAST:event_confirmarConsultaActionPerformed
 
     public Integer getId(){
@@ -209,21 +219,27 @@ public class BuscaVeiculoView extends javax.swing.JDialog {
     }
     
     private void carregaDados(String nomeVeiculo){
-        Limpar();
-        ServicosServ buscaVeiculos = ServicosServ.getInstancia();
-        int i = 0;
-        
-        veiculo = buscaVeiculos.buscarVeiculo(nomeVeiculo);
-        
-        
-        model.addRow(new Object[]{
-            i + 1,
-            veiculo.getModelo(),
-            veiculo.getMarca(),
-            veiculo.getAno(),
-            veiculo.getValorLocacao()
+        if (nomeVeiculo.equals("")){
+            String msg = "Digite o nome do veículo";
+            JOptionPane.showMessageDialog(null, msg);
+            modeloVeiculo.requestFocus();
+        }else{
+            Limpar();
+            
+            int i = 0;
 
-        });
+            veiculo = todosVeiculos.buscarVeiculo(nomeVeiculo);
+
+
+            model.addRow(new Object[]{
+                i + 1,
+                veiculo.getModelo(),
+                veiculo.getMarca(),
+                veiculo.getAno(),
+                veiculo.getValorLocacao()
+
+            });
+        }
     }
     
     private void modeloVeiculoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_modeloVeiculoKeyReleased

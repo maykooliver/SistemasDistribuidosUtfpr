@@ -189,19 +189,21 @@ public class CadastrarVeiculoView extends javax.swing.JDialog {
     private void buscarVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarVeiculoActionPerformed
         BuscaVeiculoView buscaVeiculos = new BuscaVeiculoView(null, true);
         buscaVeiculos.setVisible(true);
-                
-        jtfModelo.setEnabled(false);
-        jtfMarca.setEnabled(false);        
-        jtfAno.setEnabled(false);
         
         id = buscaVeiculos.getId();
         
         veiculo = buscaVeiculos.getVeiculo();
-        System.out.println(veiculo.toString());
-        jtfModelo.setText(MyNumber.parseString(veiculo.getModelo()));
-        jtfMarca.setText(MyNumber.parseString(veiculo.getMarca()));
-        jtfAno.setText(MyNumber.parseString(veiculo.getAno()));
-        jtfValorLocacao.setText(MyNumber.parseString(veiculo.getValorLocacao()));
+        //System.out.println(veiculo.toString());
+        if (veiculo != null){
+            jtfModelo.setEnabled(false);
+            jtfMarca.setEnabled(false);        
+            jtfAno.setEnabled(false);
+            
+            jtfModelo.setText(MyNumber.parseString(veiculo.getModelo()));
+            jtfMarca.setText(MyNumber.parseString(veiculo.getMarca()));
+            jtfAno.setText(MyNumber.parseString(veiculo.getAno()));
+            jtfValorLocacao.setText(MyNumber.parseString(veiculo.getValorLocacao()));
+        }
     }//GEN-LAST:event_buscarVeiculoActionPerformed
 
     /**
