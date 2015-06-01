@@ -7,6 +7,7 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import aluguelveiculosutf.interfaces.InterfaceCli;
 import aluguelveiculosutf.interfaces.InterfaceServ;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -138,6 +139,18 @@ public class CliImpl extends UnicastRemoteObject implements InterfaceCli
         } catch (RemoteException ex) {
             Logger.getLogger(CliImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public ArrayList<Veiculo> consultarVeiculo(){
+        ArrayList<Veiculo> listaVeiculo = new ArrayList<>();
+        try {
+            listaVeiculo = refServ.consultarVeiculos();
+        } catch (RemoteException ex) {
+            System.out.println("deu merda");
+            //Logger.getLogger(CliImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("funcionou");
+        return listaVeiculo;
     }
     
 }

@@ -6,6 +6,8 @@
 package aluguelveiculosutf.view;
 
 import aluguelveiculosutf.impl.CliImpl;
+import aluguelveiculosutf.impl.Veiculo;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,6 +26,9 @@ public class ConsultarCarros extends javax.swing.JFrame {
     {
         initComponents();
         cliImpl = cli;
+        ArrayList<Veiculo> listaVeiculo;
+        listaVeiculo = cliImpl.consultarVeiculo();
+        System.out.println("ok!");
     }
 
     /**
