@@ -19,10 +19,11 @@ import javax.swing.JOptionPane;
 public class ServicosServ {
 
     private static ServicosServ instancia;
-    public static ArrayList<Veiculo> listaVeiculo = new ArrayList<>();
+    public static ArrayList<Veiculo> listaVeiculo;
 
 
     private ServicosServ(){
+        listaVeiculo = new ArrayList<>();
 //        try {
 //            //Cria o registro para receber as referencias, para a porta 1099, local
 //            Registry referenciaServicoNome = LocateRegistry.createRegistry(1099);
