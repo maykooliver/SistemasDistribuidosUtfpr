@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 public class ServicosServ {
 
     private static ServicosServ instancia;
-    public ArrayList<Veiculo> listaVeiculo = new ArrayList<>();
+    public static ArrayList<Veiculo> listaVeiculo = new ArrayList<>();
 
 
     private ServicosServ(){
@@ -39,7 +39,7 @@ public class ServicosServ {
 //        }
     }
 
-    public ArrayList<Veiculo> getListaVeiculo() {
+    public static ArrayList<Veiculo> getListaVeiculo() {
         return listaVeiculo;
     }
 

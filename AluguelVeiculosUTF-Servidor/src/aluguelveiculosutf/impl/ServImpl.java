@@ -4,6 +4,8 @@ import aluguelveiculosutf.interfaces.InterfaceCli;
 import aluguelveiculosutf.interfaces.InterfaceServ;
 import aluguelveiculosutf.servidor.Interessado;
 import aluguelveiculosutf.servidor.Locador;
+import aluguelveiculosutf.servidor.ServicosServ;
+import aluguelveiculosutf.servidor.Veiculo;
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -79,6 +81,13 @@ public class ServImpl extends UnicastRemoteObject implements InterfaceServ{
     @Override
     public void novoClienteConectado(String nomeCli) throws RemoteException{
         System.out.println("Novo cliente conectado: " + nomeCli);
+    }
+
+    @Override
+    public ArrayList<Veiculo> consultarVeiculos() throws RemoteException {
+        ArrayList<Veiculo> listaVeiculos;
+        listaVeiculos = ServicosServ.getListaVeiculo();
+        return listaVeiculos;
     }
 
 }

@@ -1,7 +1,9 @@
 package aluguelveiculosutf.interfaces;
 
+import aluguelveiculosutf.servidor.Veiculo;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 /**
  *
@@ -55,5 +57,13 @@ public interface InterfaceServ extends Remote{
      * @param nomeCli 
      */
     public void novoClienteConectado(String nomeCli) throws RemoteException;
+    
+    /**
+     *
+     * @return
+     * @throws RemoteException
+     */
+    public ArrayList<Veiculo> consultarVeiculos() throws RemoteException;
+    
     
 }
