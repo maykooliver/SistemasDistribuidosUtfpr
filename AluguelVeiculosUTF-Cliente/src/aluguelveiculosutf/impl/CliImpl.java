@@ -7,6 +7,7 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import aluguelveiculosutf.interfaces.InterfaceCli;
 import aluguelveiculosutf.interfaces.InterfaceServ;
+import aluguelveiculosutf.servidor.Veiculo;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;

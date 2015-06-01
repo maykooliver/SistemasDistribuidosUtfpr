@@ -1,6 +1,6 @@
 package aluguelveiculosutf.interfaces;
 
-import aluguelveiculosutf.impl.Veiculo;
+import aluguelveiculosutf.servidor.Veiculo;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;

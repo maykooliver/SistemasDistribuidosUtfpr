@@ -6,7 +6,7 @@
 package aluguelveiculosutf.view;
 
 import aluguelveiculosutf.impl.CliImpl;
-import aluguelveiculosutf.impl.Veiculo;
+import aluguelveiculosutf.servidor.Veiculo;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
