@@ -147,8 +147,6 @@ public class CadastrarVeiculoView extends javax.swing.JDialog {
         
         ServicosServ servico = ServicosServ.getInstancia();
         
-        //Veiculo veiculo = new Veiculo();
-        
         veiculo.setModelo(jtfModelo.getText());
         veiculo.setMarca(jtfMarca.getText());
         veiculo.setAno(Integer.parseInt(jtfAno.getText()));
@@ -159,6 +157,8 @@ public class CadastrarVeiculoView extends javax.swing.JDialog {
         servico.salvarVeiculo(veiculo);
         
         limparTela();        
+        
+        dispose();
     }//GEN-LAST:event_cadastrarVeiculoActionPerformed
 
     public void limparTela(){
@@ -183,6 +183,7 @@ public class CadastrarVeiculoView extends javax.swing.JDialog {
         
         limparTela();
         
+        dispose();
         
     }//GEN-LAST:event_atualizarVeiculoActionPerformed
 
