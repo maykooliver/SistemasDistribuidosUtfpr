@@ -50,11 +50,12 @@ public interface InterfaceServ extends Remote{
      * @return 
      */
     public boolean solicitacaoFormLocacao(String modeloVeic, InterfaceCli ref) throws RemoteException;
-    
+
     /**
      * Novo Cliente Conectado.
      * Informa que um novo cliente se conectou ao servidor.
      * @param nomeCli 
+     * @throws java.rmi.RemoteException 
      */
     public void novoClienteConectado(String nomeCli) throws RemoteException;
     
@@ -64,6 +65,5 @@ public interface InterfaceServ extends Remote{
      * @throws RemoteException
      */
     public ArrayList<Veiculo> consultarVeiculos() throws RemoteException;
-    
     
 }
