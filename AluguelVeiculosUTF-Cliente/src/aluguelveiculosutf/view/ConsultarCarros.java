@@ -28,7 +28,6 @@ public class ConsultarCarros extends javax.swing.JFrame {
         cliImpl = cli;
         ArrayList<Veiculo> listaVeiculo;
         listaVeiculo = cliImpl.consultarVeiculo();
-        System.out.println("ok!");
     }
 
     /**

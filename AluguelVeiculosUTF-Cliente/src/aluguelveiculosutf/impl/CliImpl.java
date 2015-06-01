@@ -146,10 +146,9 @@ public class CliImpl extends UnicastRemoteObject implements InterfaceCli
         try {
             listaVeiculo = refServ.consultarVeiculos();
         } catch (RemoteException ex) {
-            System.out.println("deu merda");
+            System.out.println("!adrem");
             //Logger.getLogger(CliImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("funcionou");
         return listaVeiculo;
     }
     
