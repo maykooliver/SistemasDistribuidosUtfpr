@@ -5,6 +5,7 @@
  */
 package aluguelveiculosutf.view;
 
+import aluguelveiculosutf.servidor.Serializa;
 import aluguelveiculosutf.servidor.ServicosServ;
 import aluguelveiculosutf.servidor.Veiculo;
 import aluguelveiculosutf.util.MyNumber;
@@ -147,6 +148,7 @@ public class CadastrarVeiculoView extends javax.swing.JDialog {
         
         ServicosServ servico = ServicosServ.getInstancia();
         
+        
         veiculo.setModelo(jtfModelo.getText());
         veiculo.setMarca(jtfMarca.getText());
         veiculo.setAno(Integer.parseInt(jtfAno.getText()));
@@ -155,6 +157,8 @@ public class CadastrarVeiculoView extends javax.swing.JDialog {
         System.out.println(veiculo.toString());
         
         servico.salvarVeiculo(veiculo);
+        
+        
         
         limparTela();        
         

@@ -58,8 +58,11 @@ public class ServicosServ {
 
     public void salvarVeiculo(Veiculo veiculo) {
         listaVeiculo.add(veiculo);
+        Serializa serializa = new Serializa();
         String msg = "Veículo cadastrado com sucesso!";
         JOptionPane.showMessageDialog(null, msg);
+        serializa.serializaVeiculos(listaVeiculo);
+        
     }
 
     public void editarVeiculo(int indice, Veiculo veiculo) {

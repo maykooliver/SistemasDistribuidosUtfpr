@@ -9,7 +9,7 @@ package aluguelveiculosutf.servidor;
  *
  * @author Lucas
  */
-public class Veiculo {
+public class Veiculo implements java.io.Serializable {
     String modelo;
     String marca;
     int ano;
