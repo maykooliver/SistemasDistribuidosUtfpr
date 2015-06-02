@@ -24,6 +24,7 @@ public class ServicosServ {
 
     private ServicosServ(){
         listaVeiculo = new ArrayList<>();
+        
 //        try {
 //            //Cria o registro para receber as referencias, para a porta 1099, local
 //            Registry referenciaServicoNome = LocateRegistry.createRegistry(1099);

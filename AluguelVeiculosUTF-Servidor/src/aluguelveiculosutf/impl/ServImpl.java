@@ -85,8 +85,10 @@ public class ServImpl extends UnicastRemoteObject implements InterfaceServ{
 
     @Override
     public ArrayList<Veiculo> consultarVeiculos() throws RemoteException {
+        System.out.println("Yes");
         ArrayList<Veiculo> listaVeiculos;
         listaVeiculos = ServicosServ.getListaVeiculo();
+        System.out.println(listaVeiculos.get(0).getModelo());
         return listaVeiculos;
     }
 
