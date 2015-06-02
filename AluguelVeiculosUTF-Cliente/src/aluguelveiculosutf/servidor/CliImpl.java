@@ -148,7 +148,7 @@ public class CliImpl extends UnicastRemoteObject implements InterfaceCli
         ArrayList<Veiculo> listaVeiculo = new ArrayList<>();
             Serializa serializa = new Serializa();
         
-        try {
+        //try {
 //            FileInputStream arquivoLeitura = new FileInputStream("C:/dadosVeiculos/dadosVeiculos.txt");
 //            ObjectInputStream objLeitura = new ObjectInputStream(arquivoLeitura);
 //            System.out.println(objLeitura.readObject());
@@ -157,12 +157,12 @@ public class CliImpl extends UnicastRemoteObject implements InterfaceCli
             System.out.println(listaVeiculo.get(0).toString());
             //Aluno alunoDeserializa = (Aluno) objLeitura.readObject();
             //objLeitura.readObject();
-            listaVeiculo = refServ.consultarVeiculos();
+            //listaVeiculo = refServ.consultarVeiculos();
 //            System.out.println(listaVeiculo.get(0).modelo);
-        } catch (RemoteException ex) {
-            System.out.println("!adrem");
-            Logger.getLogger(CliImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        } catch (RemoteException ex) {
+//            System.out.println("!adrem");
+//            Logger.getLogger(CliImpl.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         return listaVeiculo;
     }
     

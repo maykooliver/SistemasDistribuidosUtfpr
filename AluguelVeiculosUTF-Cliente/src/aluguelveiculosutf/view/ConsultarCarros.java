@@ -30,6 +30,12 @@ public class ConsultarCarros extends javax.swing.JFrame {
         cliImpl = cli;
         ArrayList<Veiculo> listaVeiculo;
         listaVeiculo = cliImpl.consultarVeiculo();
+        System.out.println(listaVeiculo.toString());
+        
+        for (Veiculo veiculo: listaVeiculo) {
+            modeloVeiculo.addItem(veiculo.toString());
+        }
+        
     }
 
     /**
@@ -100,7 +106,11 @@ public class ConsultarCarros extends javax.swing.JFrame {
 
         jLabel9.setText("Veículos para locação:");
 
-        modeloVeiculo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        modeloVeiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modeloVeiculoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
@@ -125,12 +135,13 @@ public class ConsultarCarros extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(registrarInteresse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(precoDesejado)
-                            .addComponent(modeloVeiculo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                        .addComponent(alugarVeiculo)))
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                                .addComponent(registrarInteresse)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
+                                .addComponent(alugarVeiculo))
+                            .addComponent(modeloVeiculo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(precoDesejado))))
                 .addContainerGap())
         );
         jInternalFrame1Layout.setVerticalGroup(
@@ -161,7 +172,7 @@ public class ConsultarCarros extends javax.swing.JFrame {
                     .addComponent(voltar)
                     .addComponent(registrarInteresse)
                     .addComponent(alugarVeiculo))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -216,6 +227,10 @@ public class ConsultarCarros extends javax.swing.JFrame {
             new AlugarCarro(cliImpl, modeloVeic).setVisible(true);
         }
     }//GEN-LAST:event_alugarVeiculoActionPerformed
+
+    private void modeloVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modeloVeiculoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modeloVeiculoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton alugarVeiculo;

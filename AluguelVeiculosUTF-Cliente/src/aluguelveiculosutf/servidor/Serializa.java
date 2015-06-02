@@ -37,14 +37,11 @@ public class Serializa {
         ArrayList<Veiculo> listaVeiculo = new ArrayList<>();
         try {
             FileInputStream arquivoLeitura = new FileInputStream("C:/dadosVeiculos/dadosVeiculos.txt");
-            System.out.println(arquivoLeitura);
+            //System.out.println(arquivoLeitura);
             ObjectInputStream objLeitura = new ObjectInputStream(arquivoLeitura);
-            System.out.println(objLeitura.readObject());
-//            for(objLeitura.readObject() : listaVeiculo){  
-//                
-//            } 
+            
             listaVeiculo = (ArrayList<Veiculo>) objLeitura.readObject();
-            System.out.println(listaVeiculo.toString());
+            //System.out.println(listaVeiculo.toString());
             objLeitura.close();
             arquivoLeitura.close();
             
