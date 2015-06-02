@@ -33,17 +33,27 @@ public class Serializa {
         }
     }
 
-    public void descerializaVeiculos(){
+    public ArrayList<Veiculo> descerializaVeiculos(){
+        ArrayList<Veiculo> listaVeiculo = new ArrayList<>();
         try {
             FileInputStream arquivoLeitura = new FileInputStream("C:/dadosVeiculos/dadosVeiculos.txt");
+            System.out.println(arquivoLeitura);
             ObjectInputStream objLeitura = new ObjectInputStream(arquivoLeitura);
-            //Professor  = (Clientes) objLeitura.readObject();
-            //System.out.println(arquivoLeitura);
+            System.out.println(objLeitura.readObject());
+//            for(objLeitura.readObject() : listaVeiculo){  
+//                
+//            } 
+            listaVeiculo = (ArrayList<Veiculo>) objLeitura.readObject();
+            System.out.println(listaVeiculo.toString());
             objLeitura.close();
             arquivoLeitura.close();
+            
+            return listaVeiculo;
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
+        return null;
     }
 
 

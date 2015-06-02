@@ -9,6 +9,7 @@ import java.rmi.RemoteException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import aluguelveiculosutf.servidor.CliImpl;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 
 /**
@@ -116,7 +117,13 @@ public class OpcoesOperacoes extends javax.swing.JFrame {
 
     private void consultarCarrosActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_consultarCarrosActionPerformed
     {//GEN-HEADEREND:event_consultarCarrosActionPerformed
-        new ConsultarCarros(cliImpl).setVisible(true);
+        try {
+            new ConsultarCarros(cliImpl).setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(OpcoesOperacoes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(OpcoesOperacoes.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_consultarCarrosActionPerformed
 
     private void devolverCarroActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_devolverCarroActionPerformed

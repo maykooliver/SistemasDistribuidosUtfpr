@@ -146,18 +146,18 @@ public class CliImpl extends UnicastRemoteObject implements InterfaceCli
     
     public ArrayList<Veiculo> consultarVeiculo() throws IOException, ClassNotFoundException{
         ArrayList<Veiculo> listaVeiculo = new ArrayList<>();
+            Serializa serializa = new Serializa();
         
         try {
-            FileInputStream arquivoLeitura = new FileInputStream("C:/dadosVeiculos/dadosVeiculos.txt");
-            ObjectInputStream objLeitura = new ObjectInputStream(arquivoLeitura);
-            System.out.println(objLeitura.readObject());
-            listaVeiculo = (ArrayList<Veiculo>) objLeitura.readObject();
+//            FileInputStream arquivoLeitura = new FileInputStream("C:/dadosVeiculos/dadosVeiculos.txt");
+//            ObjectInputStream objLeitura = new ObjectInputStream(arquivoLeitura);
+//            System.out.println(objLeitura.readObject());
+//            listaVeiculo = (ArrayList<Veiculo>) objLeitura.readObject();
+            listaVeiculo = serializa.descerializaVeiculos();
             System.out.println(listaVeiculo.get(0).toString());
             //Aluno alunoDeserializa = (Aluno) objLeitura.readObject();
             //objLeitura.readObject();
-            objLeitura.close();
-            arquivoLeitura.close();
-//            listaVeiculo = refServ.consultarVeiculos();
+            listaVeiculo = refServ.consultarVeiculos();
 //            System.out.println(listaVeiculo.get(0).modelo);
         } catch (RemoteException ex) {
             System.out.println("!adrem");
