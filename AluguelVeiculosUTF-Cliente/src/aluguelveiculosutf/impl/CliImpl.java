@@ -7,7 +7,9 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import aluguelveiculosutf.interfaces.InterfaceCli;
 import aluguelveiculosutf.interfaces.InterfaceServ;
+import aluguelveiculosutf.servidor.Serializa;
 import aluguelveiculosutf.servidor.Veiculo;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -142,14 +144,21 @@ public class CliImpl extends UnicastRemoteObject implements InterfaceCli
         }
     }
     
-    public ArrayList<Veiculo> consultarVeiculo(){
+//    public ArrayList<Veiculo> consultarVeiculo(){
+//        ArrayList<Veiculo> listaVeiculo = new ArrayList<>();
+//        try {
+//            listaVeiculo = refServ.consultarVeiculos();
+//        } catch (RemoteException ex) {
+//            System.out.println("!adrem");
+//            //Logger.getLogger(CliImpl.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return listaVeiculo;
+//    }
+    
+     public ArrayList<Veiculo> consultarVeiculo() throws IOException, ClassNotFoundException{
         ArrayList<Veiculo> listaVeiculo = new ArrayList<>();
-        try {
-            listaVeiculo = refServ.consultarVeiculos();
-        } catch (RemoteException ex) {
-            System.out.println("!adrem");
-            //Logger.getLogger(CliImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        Serializa serializa = new Serializa();
+        listaVeiculo = serializa.descerializaVeiculos();
         return listaVeiculo;
     }
     

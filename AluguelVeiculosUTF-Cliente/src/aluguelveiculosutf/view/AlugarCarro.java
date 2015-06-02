@@ -5,7 +5,7 @@
  */
 package aluguelveiculosutf.view;
 
-import aluguelveiculosutf.servidor.CliImpl;
+import aluguelveiculosutf.impl.CliImpl;
 import javax.swing.JOptionPane;
 
 /**

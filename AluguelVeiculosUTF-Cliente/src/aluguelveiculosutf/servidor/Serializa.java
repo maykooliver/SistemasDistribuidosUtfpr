@@ -39,7 +39,7 @@ public class Serializa {
             FileInputStream arquivoLeitura = new FileInputStream("C:/dadosVeiculos/dadosVeiculos.txt");
             //System.out.println(arquivoLeitura);
             ObjectInputStream objLeitura = new ObjectInputStream(arquivoLeitura);
-            
+            //System.out.println(objLeitura.readObject());
             listaVeiculo = (ArrayList<Veiculo>) objLeitura.readObject();
             //System.out.println(listaVeiculo.toString());
             objLeitura.close();

@@ -6,7 +6,7 @@
 package aluguelveiculosutf.view;
 
 
-import aluguelveiculosutf.servidor.CliImpl;
+import aluguelveiculosutf.impl.CliImpl;
 import aluguelveiculosutf.servidor.Veiculo;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ public class ConsultarCarros extends javax.swing.JFrame {
         System.out.println(listaVeiculo.toString());
         
         for (Veiculo veiculo: listaVeiculo) {
-            modeloVeiculo.addItem(veiculo.toString());
+            modeloVeiculo.addItem(veiculo.getModelo());
         }
         
     }
