@@ -5,8 +5,10 @@
  */
 package aluguelveiculosutf.view;
 
+
 import aluguelveiculosutf.servidor.CliImpl;
 import aluguelveiculosutf.servidor.Veiculo;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -22,7 +24,7 @@ public class ConsultarCarros extends javax.swing.JFrame {
      * Creates new form OpcoesTransferencia
      * @param cli
      */
-    public ConsultarCarros(CliImpl cli)
+    public ConsultarCarros(CliImpl cli) throws IOException, ClassNotFoundException
     {
         initComponents();
         cliImpl = cli;
