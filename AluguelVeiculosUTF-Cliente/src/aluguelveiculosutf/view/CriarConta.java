@@ -9,7 +9,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import aluguelveiculosutf.impl.CliImpl;
+import aluguelveiculosutf.servidor.CliImpl;
 import javax.swing.JOptionPane;
 
 /**

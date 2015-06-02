@@ -5,7 +5,7 @@
  */
 package aluguelveiculosutf.view;
 
-import aluguelveiculosutf.impl.CliImpl;
+import aluguelveiculosutf.servidor.CliImpl;
 import java.rmi.RemoteException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

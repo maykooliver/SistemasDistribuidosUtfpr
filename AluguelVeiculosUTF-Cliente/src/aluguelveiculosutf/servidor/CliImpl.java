@@ -1,4 +1,4 @@
-package aluguelveiculosutf.impl;
+package aluguelveiculosutf.servidor;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -143,11 +143,13 @@ public class CliImpl extends UnicastRemoteObject implements InterfaceCli
     
     public ArrayList<Veiculo> consultarVeiculo(){
         ArrayList<Veiculo> listaVeiculo = new ArrayList<>();
+        
         try {
             listaVeiculo = refServ.consultarVeiculos();
+            System.out.println(listaVeiculo.get(0).modelo);
         } catch (RemoteException ex) {
             System.out.println("!adrem");
-            //Logger.getLogger(CliImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CliImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listaVeiculo;
     }
