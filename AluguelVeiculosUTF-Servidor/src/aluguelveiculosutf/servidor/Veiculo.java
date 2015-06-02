@@ -9,11 +9,20 @@ package aluguelveiculosutf.servidor;
  *
  * @author Lucas
  */
-public class Veiculo implements java.io.Serializable {
+public class Veiculo implements java.io.Serializable{
     String modelo;
     String marca;
     int ano;
     double valorLocacao;
+    boolean ocupado;
+
+    public boolean isOcupado() {
+        return ocupado;
+    }
+
+    public void setOcupado(boolean ocupado) {
+        this.ocupado = ocupado;
+    }
 
     public Veiculo() {
     }  
