@@ -21,7 +21,7 @@ public class Serializa {
         try {
                 FileOutputStream arquivoGrav = new FileOutputStream("C:/dadosVeiculos/dadosVeiculos.txt");
                 ObjectOutputStream objGravar = new ObjectOutputStream(arquivoGrav);
-                //Professor profserializa = new Professor();
+                
                 objGravar.writeObject(listaVeiculo);
                 objGravar.flush();
                 objGravar.close();
@@ -39,12 +39,9 @@ public class Serializa {
             FileInputStream arquivoLeitura = new FileInputStream("C:/dadosVeiculos/dadosVeiculos.txt");
             System.out.println(arquivoLeitura);
             ObjectInputStream objLeitura = new ObjectInputStream(arquivoLeitura);
-            System.out.println(objLeitura.readObject());
-//            for(objLeitura.readObject() : listaVeiculo){  
-//                
-//            } 
+            
             listaVeiculo = (ArrayList<Veiculo>) objLeitura.readObject();
-            System.out.println(listaVeiculo.toString());
+            //System.out.println(listaVeiculo.toString());
             objLeitura.close();
             arquivoLeitura.close();
             
