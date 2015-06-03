@@ -13,18 +13,48 @@ import java.util.Date;
  * @author Lucas
  */
 public class Locador {
+    String modeloVeiculoLocado;
     String localRetirada;
     String localDevolucao;
-    Date dataInicio;
+    String dataInicio;
     String horaInicio;
-    Date dataFim;
+    String dataFim;
     String horaFim;
     String nomeCondutor;
     int idadeCondutor;
-    int parcelaPagamentoCartao;
+    String parcelaPagamentoCartao;
     boolean receberNotificacao;
+
+    public String getModeloVeiculoLocado() {
+        return modeloVeiculoLocado;
+    }
+
+    public void setModeloVeiculoLocado(String modeloVeiculoLocado) {
+        this.modeloVeiculoLocado = modeloVeiculoLocado;
+    }
+
+    @Override
+    public String toString() {
+        return "Locador{" + "modeloVeiculoLocado=" + modeloVeiculoLocado + ", localRetirada=" + localRetirada + ", localDevolucao=" + localDevolucao + ", dataInicio=" + dataInicio + ", horaInicio=" + horaInicio + ", dataFim=" + dataFim + ", horaFim=" + horaFim + ", nomeCondutor=" + nomeCondutor + ", idadeCondutor=" + idadeCondutor + ", parcelaPagamentoCartao=" + parcelaPagamentoCartao + ", receberNotificacao=" + receberNotificacao + '}';
+    }
     
     private InterfaceCli refCli;
+
+    public Locador(String modeloVeiculoLocado, String localRetirada, String localDevolucao, String dataInicio, String horaInicio, String dataFim, String horaFim, String nomeCondutor, int idadeCondutor, String parcelaPagamentoCartao, InterfaceCli refCli) {
+        this.modeloVeiculoLocado = modeloVeiculoLocado;
+        this.localRetirada = localRetirada;
+        this.localDevolucao = localDevolucao;
+        this.dataInicio = dataInicio;
+        this.horaInicio = horaInicio;
+        this.dataFim = dataFim;
+        this.horaFim = horaFim;
+        this.nomeCondutor = nomeCondutor;
+        this.idadeCondutor = idadeCondutor;
+        this.parcelaPagamentoCartao = parcelaPagamentoCartao;
+        this.refCli = refCli;
+    }
+    
+    
 
     public Locador() {
     }
@@ -45,11 +75,11 @@ public class Locador {
         this.localDevolucao = localDevolucao;
     }
 
-    public Date getDataInicio() {
+    public String getDataInicio() {
         return dataInicio;
     }
 
-    public void setDataInicio(Date dataInicio) {
+    public void setDataInicio(String dataInicio) {
         this.dataInicio = dataInicio;
     }
 
@@ -61,11 +91,11 @@ public class Locador {
         this.horaInicio = horaInicio;
     }
 
-    public Date getDataFim() {
+    public String getDataFim() {
         return dataFim;
     }
 
-    public void setDataFim(Date dataFim) {
+    public void setDataFim(String dataFim) {
         this.dataFim = dataFim;
     }
 
@@ -93,11 +123,11 @@ public class Locador {
         this.idadeCondutor = idadeCondutor;
     }
 
-    public int getParcelaPagamentoCartao() {
+    public String getParcelaPagamentoCartao() {
         return parcelaPagamentoCartao;
     }
 
-    public void setParcelaPagamentoCartao(int parcelaPagamentoCartao) {
+    public void setParcelaPagamentoCartao(String parcelaPagamentoCartao) {
         this.parcelaPagamentoCartao = parcelaPagamentoCartao;
     }
 
@@ -108,12 +138,7 @@ public class Locador {
     public void setReceberNotificacao(boolean receberNotificacao) {
         this.receberNotificacao = receberNotificacao;
     }
-
-    @Override
-    public String toString() {
-        return "Cliente{" + "localRetirada=" + localRetirada + ", localDevolucao=" + localDevolucao + ", dataInicio=" + dataInicio + ", horaInicio=" + horaInicio + ", dataFim=" + dataFim + ", horaFim=" + horaFim + ", nomeCondutor=" + nomeCondutor + ", idadeCondutor=" + idadeCondutor + ", parcelaPagamentoCartao=" + parcelaPagamentoCartao + ", receberNotificacao=" + receberNotificacao + '}';
-    }
-
+   
     /**
      * @return the refCli
      */

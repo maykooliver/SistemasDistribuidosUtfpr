@@ -32,7 +32,7 @@ public interface InterfaceServ extends Remote{
      * @param ref
      * @return 
      */
-    public boolean alugarVeic(String locRetirada, String locDevolucao, String dataIni, String dataTerm, String condutor, int idade, String numeroParcelas, InterfaceCli ref) throws RemoteException;
+    public boolean alugarVeic(String modeloVeiculoLocado, String locRetirada, String locDevolucao, String dataIni, String horaInicio, String dataTerm, String horaFim, String condutor, int idade, String numeroParcelas, InterfaceCli ref) throws RemoteException;
 
     /**
      * Registrar Interesse de Veículo.

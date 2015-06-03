@@ -6,12 +6,14 @@ import aluguelveiculosutf.servidor.Interessado;
 import aluguelveiculosutf.servidor.Locador;
 import aluguelveiculosutf.servidor.ServicosServ;
 import aluguelveiculosutf.servidor.Veiculo;
+import aluguelveiculosutf.util.MyNumber;
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -19,8 +21,7 @@ import java.util.ArrayList;
  */
 public class ServImpl extends UnicastRemoteObject implements InterfaceServ{
     
-    public static ArrayList<Locador> contas;
-    public ArrayList<Locador> listaLocadores;
+   public static ArrayList<Locador> listaLocadores;
     public ArrayList<Interessado> listaInteressados;
     
     /**
@@ -42,7 +43,7 @@ public class ServImpl extends UnicastRemoteObject implements InterfaceServ{
             referenciaServicoNome.rebind("Locacao de Veiculos", this);
 
             //Inicia o array de clientes.
-            contas = new ArrayList<>();
+            //contas = new ArrayList<>();
 
             System.out.println("Serviços de locação de veículos iniciado..\n");
             
@@ -52,10 +53,14 @@ public class ServImpl extends UnicastRemoteObject implements InterfaceServ{
         }        
     }
 
-    @Override
-    public boolean alugarVeic(String locRetirada, String locDevolucao, String dataIni, String dataTerm, String condutor, int idade, String numeroParcelas, InterfaceCli ref) throws RemoteException {
+     @Override
+    public boolean alugarVeic(String modeloVeiculoLocado, String locRetirada, String locDevolucao, String dataIni, String horaInicio, String dataTerm, String horaFim, String condutor, int idade, String numeroParcelas, InterfaceCli ref) throws RemoteException {
         //Bloquear veículo para locação (que ja deve estar bloqueado pela solicitaçãodo form) e popular os dados 
         // da classe Locador e adicioná=lo ao array.
+        
+        Locador locador = new Locador(modeloVeiculoLocado, locRetirada, locDevolucao, dataIni, horaInicio, dataTerm, horaFim, condutor, idade, numeroParcelas, ref) ;
+        
+        
         return true;
     }
 
