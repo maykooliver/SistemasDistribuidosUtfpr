@@ -65,13 +65,13 @@ public class ServicosServ {
         
     }
 
-    public void editarVeiculo(int indice, Veiculo veiculo) {
+    public static void editarVeiculo(int indice, Veiculo veiculo) {
         listaVeiculo.set(indice, veiculo);
         String msg = "Veículo editado com sucesso!";
         JOptionPane.showMessageDialog(null, msg);
     }
 
-    public Veiculo buscarVeiculo(String modeloVeiculo) {
+    public static Veiculo buscarVeiculo(String modeloVeiculo) {
         Veiculo veiculo = null;
         try {
             veiculo = listaVeiculo.

@@ -5,6 +5,7 @@ import aluguelveiculosutf.interfaces.InterfaceServ;
 import aluguelveiculosutf.servidor.Interessado;
 import aluguelveiculosutf.servidor.Locador;
 import aluguelveiculosutf.servidor.ServicosServ;
+import static aluguelveiculosutf.servidor.ServicosServ.listaVeiculo;
 import aluguelveiculosutf.servidor.Veiculo;
 import aluguelveiculosutf.util.MyNumber;
 import java.rmi.AlreadyBoundException;
@@ -14,6 +15,8 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.NoSuchElementException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -60,6 +63,18 @@ public class ServImpl extends UnicastRemoteObject implements InterfaceServ{
         
         Locador locador = new Locador(modeloVeiculoLocado, locRetirada, locDevolucao, dataIni, horaInicio, dataTerm, horaFim, condutor, idade, numeroParcelas, ref) ;
         
+        listaLocadores.add(locador);
+
+        int indice = 0;
+        
+        for (Veiculo veiculo: listaVeiculo){
+            if(veiculo.getModelo().equals(modeloVeiculoLocado)){
+                veiculo.setOcupado(true);
+                ServicosServ.editarVeiculo(indice, veiculo);
+            }else{
+                indice ++;
+            }
+        }
         
         return true;
     }
@@ -73,14 +88,59 @@ public class ServImpl extends UnicastRemoteObject implements InterfaceServ{
 
     @Override
     public boolean solicitacaoFormLocacao(String modeloVeic, InterfaceCli ref) throws RemoteException {
-        //Procurar aqui o veiculo no array e bloqueá-lo
-        return true;
+        int indice = 0;
+        
+        for (Veiculo veiculo: listaVeiculo){
+            if(veiculo.getModelo().equals(modeloVeic)){
+                veiculo.setOcupado(true);
+                ServicosServ.editarVeiculo(indice, veiculo);
+                if(!veiculo.isOcupado()){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                indice ++;
+            }
+        }
+        
+        return false;
     }
 
     @Override
     public boolean devolverVeiculo(String nomeCli, InterfaceCli ref) throws RemoteException {
-        //desbloquear veículo para outras locações
-        return true;
+        
+        try {
+            int indice = 0;
+            
+            String modelo = null;
+            
+            for (Locador loc : listaLocadores) {
+                if (loc.getNomeCondutor().equals(nomeCli)) {
+                    modelo = loc.getModeloVeiculoLocado();
+                    listaLocadores.remove(indice);
+                } else {
+                    indice++;
+                }
+            }
+            
+            indice = 0;
+            
+            for (Veiculo veiculo : listaVeiculo) {
+                if (veiculo.getModelo().equals(modelo)) {
+                    veiculo.setOcupado(false);
+                    ServicosServ.editarVeiculo(indice, veiculo);
+                } else {
+                    indice++;
+                }
+            }
+            
+            return true;
+            
+        } catch (Exception e) {
+        }
+
+        return false;
     }
 
     @Override
