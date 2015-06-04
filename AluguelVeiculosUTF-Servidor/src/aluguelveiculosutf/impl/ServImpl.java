@@ -92,8 +92,6 @@ public class ServImpl extends UnicastRemoteObject implements InterfaceServ{
         
         for (Veiculo veiculo: listaVeiculo){
             if(veiculo.getModelo().equals(modeloVeic)){
-                veiculo.setOcupado(true);
-                ServicosServ.editarVeiculo(indice, veiculo);
                 if(!veiculo.isOcupado()){
                     return true;
                 }else{
