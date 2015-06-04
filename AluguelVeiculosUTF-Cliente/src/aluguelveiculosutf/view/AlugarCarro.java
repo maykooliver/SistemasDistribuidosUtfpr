@@ -28,6 +28,8 @@ public class AlugarCarro extends javax.swing.JFrame {
         carroALocar = modeloVeiculo;
         modeloCarro.setText(carroALocar);
         modeloCarro.setEnabled(false);
+        nomeCondutor.setText(cli.nomeCli);
+        nomeCondutor.setEnabled(false);
     }
 
     /**
@@ -270,9 +272,13 @@ public class AlugarCarro extends javax.swing.JFrame {
         String condutor = nomeCondutor.getText();
         String age = idadeCondutor.getText();
         String numeroParcelas = parcelas.getSelectedItem().toString();
+        String horaIni = horaInicio.getText();
+        String horaF = horaFim.getText();
+        String modeloCarroLocado = modeloCarro.getText();
         
         String msg;
         try{
+            //continuar daqui!!
             int idade = Integer.parseInt(age);
             if(locRetirada.equals("") || locDevolucao.equals("") || dataIni.equals("")
                     || dataTerm.equals("") || condutor.equals("") || numeroParcelas.equals("")
@@ -283,7 +289,7 @@ public class AlugarCarro extends javax.swing.JFrame {
                 msg = "Somente condutores acima de 18 anos de idade podem alugar um carro.";
                 JOptionPane.showMessageDialog(null, msg);
             }else{
-                boolean ret = cliImpl.alugarVeic(locRetirada, locDevolucao, dataIni, dataTerm, condutor, idade, numeroParcelas);
+                boolean ret = cliImpl.alugarVeic(modeloCarroLocado, locRetirada, locDevolucao, dataIni, horaIni, dataTerm, horaF, condutor, idade, numeroParcelas);
                 if(ret) msg = "Locação de carro realizada com sucesso!";
                 else msg = "Lamentamos, não foi possível realizar a locação do veículo.";
                 JOptionPane.showMessageDialog(null, msg);

@@ -92,10 +92,10 @@ public class CliImpl extends UnicastRemoteObject implements InterfaceCli
      * @param numeroParcelas
      * @return 
      */
-    public boolean alugarVeic(String locRetirada, String locDevolucao, String dataIni, String dataTerm, String condutor, int idade, String numeroParcelas){
+    public boolean alugarVeic(String modeloVeiculoLocado, String locRetirada, String locDevolucao, String dataIni, String horaInicio, String dataTerm, String horaFim, String condutor, int idade, String numeroParcelas){
         boolean ret = false;
         try {
-            ret = refServ.alugarVeic(locRetirada, locDevolucao, dataIni, dataTerm, condutor, idade, numeroParcelas, this);
+            ret = refServ.alugarVeic(modeloVeiculoLocado, locRetirada, locDevolucao, dataIni, horaInicio, dataTerm, horaFim, condutor, idade, numeroParcelas, this);
         } catch (RemoteException ex) {
             Logger.getLogger(CliImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
