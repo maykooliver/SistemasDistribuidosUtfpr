@@ -22,6 +22,7 @@ public interface InterfaceServ extends Remote{
 
     /**
      * Alugar Veículo.
+     * @param modeloVeiculoLocado
      * @param locRetirada
      * @param locDevolucao
      * @param dataIni

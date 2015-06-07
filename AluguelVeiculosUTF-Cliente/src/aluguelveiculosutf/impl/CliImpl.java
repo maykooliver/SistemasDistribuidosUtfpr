@@ -111,8 +111,10 @@ public class CliImpl extends UnicastRemoteObject implements InterfaceCli
      */
     public boolean regInteresseVeic(String modeloVeic, float valor){
         boolean ret = false;
+        String modelo[] = modeloVeic.split("-");
+        System.out.println("Registrar interesse em modelo: " + modelo[0]);
         try {
-            ret = refServ.regInteresseVeic(modeloVeic, valor, this);
+            ret = refServ.regInteresseVeic(modelo[0], valor, this);
         } catch (RemoteException ex) {
             Logger.getLogger(CliImpl.class.getName()).log(Level.SEVERE, null, ex);
         }

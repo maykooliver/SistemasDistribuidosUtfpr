@@ -290,6 +290,8 @@ public class AlugarCarro extends javax.swing.JFrame {
                 msg = "Somente condutores acima de 18 anos de idade podem alugar um carro.";
                 JOptionPane.showMessageDialog(null, msg);
             }else{
+                System.out.println("veio ate aqui");
+                System.out.println("modeloCarro");
                 boolean ret = cliImpl.alugarVeic(modeloCarroLocado, locRetirada, locDevolucao, dataIni, horaIni, dataTerm, horaF, condutor, idade, numeroParcelas);
                 if(ret) msg = "Locação de carro realizada com sucesso!";
                 else msg = "Lamentamos, não foi possível realizar a locação do veículo.";

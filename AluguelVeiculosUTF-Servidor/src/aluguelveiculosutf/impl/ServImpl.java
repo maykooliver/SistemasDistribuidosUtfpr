@@ -1,3 +1,14 @@
+/**
+ * TODAS AS FUNCIONALIDADES PEDIDAS ESTÃO FUNCIONANDO, PORÉM HÁ BUGS
+ * RELACIONADOS A FUNCIONALIDADES SUPÉRFLUAS.
+ * 
+ * LISTA DE BUGS:
+ * Edição de veículo passível de erros.
+ *  Ao editar um segundo veículo, onde há dois veiculos na lista, esse segundo
+ *  veículo substituirá o primeiro.
+ */
+
+
 package aluguelveiculosutf.impl;
 
 import aluguelveiculosutf.interfaces.InterfaceCli;
@@ -57,9 +68,7 @@ public class ServImpl extends UnicastRemoteObject implements InterfaceServ{
 
      @Override
     public boolean alugarVeic(String modeloVeiculoLocado, String locRetirada, String locDevolucao, String dataIni, String horaInicio, String dataTerm, String horaFim, String condutor, int idade, String numeroParcelas, InterfaceCli ref) throws RemoteException {
-        //Bloquear veículo para locação (que ja deve estar bloqueado pela solicitaçãodo form) e popular os dados 
-        // da classe Locador e adicioná=lo ao array.
-        
+
         Locador locador = new Locador(modeloVeiculoLocado, locRetirada, locDevolucao, dataIni, horaInicio, dataTerm, horaFim, condutor, idade, numeroParcelas, ref) ;
         
         listaLocadores.add(locador);
@@ -68,6 +77,7 @@ public class ServImpl extends UnicastRemoteObject implements InterfaceServ{
         
         for (Veiculo veiculo: listaVeiculo){
             if(veiculo.getModelo().equals(modeloVeiculoLocado)){
+                indice =+1; //Apenas para corrigir bug do editarVeiculo
                 veiculo.setOcupado(true);
                 ServicosServ.editarVeiculo(indice, true, veiculo);
             }else{
@@ -113,24 +123,30 @@ public class ServImpl extends UnicastRemoteObject implements InterfaceServ{
             String modelo = null;
             
             for (Locador loc : listaLocadores) {
+                System.out.println("locador:" + loc.getNomeCondutor());
+                System.out.println("modelo: " + loc.getModeloVeiculoLocado());
                 if (loc.getNomeCondutor().equals(nomeCli)) {
                     modelo = loc.getModeloVeiculoLocado();
-                    listaLocadores.remove(indice);
-                } else {
-                    indice++;
-                }
+                    loc.setLocacaoFinalizada(true);
+                    //listaLocadores.remove(indice);
+                } 
+                indice++;
             }
             
-            System.out.println("Veio até a metade");
             indice = 0;
             
             for (Veiculo veiculo : listaVeiculo) {
-                if (veiculo.getModelo().equals(modelo)) {
+                System.out.println("Veiculo modelo: " + veiculo.getModelo());
+                System.out.println("Modelo: " + modelo);
+                if(veiculo.getModelo().equals(modelo)) {
+                    indice =+ 1; //Necessário para corrigir o bug de editarVeiculo;
+                    System.out.println("Ocupado? " + veiculo.isOcupado());
                     veiculo.setOcupado(false);
+                    System.out.println("Devolver Veiculo: " + veiculo.getModelo());
+                    System.out.println("Ocupado? " + veiculo.isOcupado());
                     ServicosServ.editarVeiculo(indice, true, veiculo);
-                } else {
-                    indice++;
                 }
+                indice++;
             }
             System.out.println("terminou o foreach de listaVeicuLOS");
             
@@ -149,10 +165,8 @@ public class ServImpl extends UnicastRemoteObject implements InterfaceServ{
 
     @Override
     public ArrayList<Veiculo> consultarVeiculos() throws RemoteException {
-        System.out.println("Yes");
         ArrayList<Veiculo> listaVeiculos;
         listaVeiculos = ServicosServ.getListaVeiculo();
-        System.out.println(listaVeiculos.get(0).getModelo());
         return listaVeiculos;
     }
     
@@ -160,7 +174,7 @@ public class ServImpl extends UnicastRemoteObject implements InterfaceServ{
         InterfaceCli refCli = ref;
         String msg = "Carro " + modelo + " já está disponível na margem de valor desejado.";
         try {
-            ref.notifCarroDisp(msg);
+            refCli.notifCarroDisp(msg);
         } catch (RemoteException ex) {
             Logger.getLogger(ServImpl.class.getName()).log(Level.SEVERE, null, ex);
         }

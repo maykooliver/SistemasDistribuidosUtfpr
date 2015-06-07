@@ -13,6 +13,7 @@ import java.util.Date;
  * @author Lucas
  */
 public class Locador {
+    boolean locacaoFinalizada;
     String modeloVeiculoLocado;
     String localRetirada;
     String localDevolucao;
@@ -25,22 +26,10 @@ public class Locador {
     String parcelaPagamentoCartao;
     boolean receberNotificacao;
 
-    public String getModeloVeiculoLocado() {
-        return modeloVeiculoLocado;
-    }
-
-    public void setModeloVeiculoLocado(String modeloVeiculoLocado) {
-        this.modeloVeiculoLocado = modeloVeiculoLocado;
-    }
-
-    @Override
-    public String toString() {
-        return "Locador{" + "modeloVeiculoLocado=" + modeloVeiculoLocado + ", localRetirada=" + localRetirada + ", localDevolucao=" + localDevolucao + ", dataInicio=" + dataInicio + ", horaInicio=" + horaInicio + ", dataFim=" + dataFim + ", horaFim=" + horaFim + ", nomeCondutor=" + nomeCondutor + ", idadeCondutor=" + idadeCondutor + ", parcelaPagamentoCartao=" + parcelaPagamentoCartao + ", receberNotificacao=" + receberNotificacao + '}';
-    }
-    
     private InterfaceCli refCli;
 
     public Locador(String modeloVeiculoLocado, String localRetirada, String localDevolucao, String dataInicio, String horaInicio, String dataFim, String horaFim, String nomeCondutor, int idadeCondutor, String parcelaPagamentoCartao, InterfaceCli refCli) {
+        this.locacaoFinalizada = false;
         this.modeloVeiculoLocado = modeloVeiculoLocado;
         this.localRetirada = localRetirada;
         this.localDevolucao = localDevolucao;
@@ -57,6 +46,20 @@ public class Locador {
     
 
     public Locador() {
+        
+    }
+    
+    public String getModeloVeiculoLocado() {
+        return modeloVeiculoLocado;
+    }
+
+    public void setModeloVeiculoLocado(String modeloVeiculoLocado) {
+        this.modeloVeiculoLocado = modeloVeiculoLocado;
+    }
+
+    @Override
+    public String toString() {
+        return "Locador{" + "modeloVeiculoLocado=" + modeloVeiculoLocado + ", localRetirada=" + localRetirada + ", localDevolucao=" + localDevolucao + ", dataInicio=" + dataInicio + ", horaInicio=" + horaInicio + ", dataFim=" + dataFim + ", horaFim=" + horaFim + ", nomeCondutor=" + nomeCondutor + ", idadeCondutor=" + idadeCondutor + ", parcelaPagamentoCartao=" + parcelaPagamentoCartao + ", receberNotificacao=" + receberNotificacao + '}';
     }
 
     public String getLocalRetirada() {
@@ -151,6 +154,18 @@ public class Locador {
      */
     public void setRefCli(InterfaceCli refCli) {
         this.refCli = refCli;
+    }
+    
+    public void setLocacaoFinalizada(boolean locacaoFinalizada) {
+        this.locacaoFinalizada = locacaoFinalizada;
+    }
+
+    public boolean isLocacaoFinalizada() {
+        return locacaoFinalizada;
+    }
+
+    public boolean isReceberNotificacao() {
+        return receberNotificacao;
     }
     
 }

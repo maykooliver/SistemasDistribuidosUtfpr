@@ -70,18 +70,17 @@ public class ServicosServ {
         Serializa serializa = new Serializa();
         serializa.serializaVeiculos(listaVeiculo);
             
+        int i = 0;
+        
         for (Interessado inter : ServImpl.listaInteressados) {
             if (inter.getModeloVeic().equals(veiculo.getModelo())){
                 if(inter.getValor() >= veiculo.getValorLocacao()){
                     ServImpl.notificarCarro(inter.getModeloVeic(), inter.getRefCli());
+                    //ServImpl.listaInteressados.remove(i);
                 }
             }
+            i++;
         }
-        
-        //TERMINAR ISSO SÁBADO A NOITE SEM FALTAAAAAAAAAAAA!!!!
-        
-        //Veiculo veic = listaVeiculo.get(indice);
-        //System.out.println("Veiculo setou para ocupado?" + veic.ocupado);
     }
 
     public static Veiculo buscarVeiculo(String modeloVeiculo) {
