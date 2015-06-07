@@ -62,7 +62,7 @@ public class Veiculo implements java.io.Serializable{
 
     @Override
     public String toString() {
-        return "Veiculo{" + "modelo=" + modelo + ", marca=" + marca + ", ano=" + ano + ", valorLocacao=" + valorLocacao + '}';
+        return "Veiculo{" + "modelo=" + modelo + ", marca=" + marca + ", ano=" + ano + ", valorLocacao=" + valorLocacao + ", ocupado=" + ocupado + '}';
     }
     
     

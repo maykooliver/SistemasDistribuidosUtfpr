@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/ProjetosFacu/SistemasDistribuidos/AluguelVeiculos/AluguelVeiculosUTF/AluguelVeiculosUTF-Servidor/src/aluguelveiculosutf/interfaces/InterfaceCli.java</file>
-            <file>file:/C:/ProjetosFacu/SistemasDistribuidos/AluguelVeiculos/AluguelVeiculosUTF/AluguelVeiculosUTF-Servidor/src/aluguelveiculosutf/servidor/Veiculo.java</file>
-            <file>file:/C:/ProjetosFacu/SistemasDistribuidos/AluguelVeiculos/AluguelVeiculosUTF/AluguelVeiculosUTF-Servidor/src/aluguelveiculosutf/servidor/Locador.java</file>
-            <file>file:/C:/ProjetosFacu/SistemasDistribuidos/AluguelVeiculos/AluguelVeiculosUTF/AluguelVeiculosUTF-Servidor/src/aluguelveiculosutf/impl/ServImpl.java</file>
-            <file>file:/C:/ProjetosFacu/SistemasDistribuidos/AluguelVeiculos/AluguelVeiculosUTF/AluguelVeiculosUTF-Servidor/src/aluguelveiculosutf/servidor/ServicosServ.java</file>
+            <file>file:/C:/Users/Lucas/Documents/NetBeansProjects/SistemasDistribuidosUtfpr/AluguelVeiculosUTF-Servidor/src/aluguelveiculosutf/servidor/ServicosServ.java</file>
+            <file>file:/C:/Users/Lucas/Documents/NetBeansProjects/SistemasDistribuidosUtfpr/AluguelVeiculosUTF-Servidor/src/aluguelveiculosutf/view/BuscaVeiculoView.java</file>
+            <file>file:/C:/Users/Lucas/Documents/NetBeansProjects/SistemasDistribuidosUtfpr/AluguelVeiculosUTF-Servidor/src/aluguelveiculosutf/view/CadastrarVeiculoView.java</file>
+            <file>file:/C:/Users/Lucas/Documents/NetBeansProjects/SistemasDistribuidosUtfpr/AluguelVeiculosUTF-Servidor/src/aluguelveiculosutf/impl/ServImpl.java</file>
         </group>
     </open-files>
 </project-private>

@@ -5,7 +5,6 @@
  */
 package aluguelveiculosutf.view;
 
-import aluguelveiculosutf.servidor.Serializa;
 import aluguelveiculosutf.servidor.ServicosServ;
 import aluguelveiculosutf.servidor.Veiculo;
 import aluguelveiculosutf.util.MyNumber;
@@ -183,7 +182,7 @@ public class CadastrarVeiculoView extends javax.swing.JDialog {
         
         //System.out.println(veiculo.toString());
         
-        servico.editarVeiculo(id, veiculo);
+        servico.editarVeiculo(id, false, veiculo);
         
         limparTela();
         

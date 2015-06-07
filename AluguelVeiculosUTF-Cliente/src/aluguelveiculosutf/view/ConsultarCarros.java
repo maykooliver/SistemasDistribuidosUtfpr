@@ -32,8 +32,11 @@ public class ConsultarCarros extends javax.swing.JFrame {
         listaVeiculo = cliImpl.consultarVeiculo();
         System.out.println(listaVeiculo.toString());
         
+        String disponibilidade;
+        
         for (Veiculo veiculo: listaVeiculo) {
-            modeloVeiculo.addItem(veiculo.getModelo());
+            System.out.println(veiculo.isOcupado());
+            modeloVeiculo.addItem(veiculo.getModelo() + "-R$" + veiculo.getValorLocacao());
         }
         
     }
@@ -52,7 +55,6 @@ public class ConsultarCarros extends javax.swing.JFrame {
         voltar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         alugarVeiculo = new javax.swing.JButton();
@@ -85,11 +87,9 @@ public class ConsultarCarros extends javax.swing.JFrame {
 
         jLabel2.setText("Abaixo, serão listados todos os carros de nossa empresa.");
 
-        jLabel4.setText("Os carros indisponíveis estão devidamente identificados, caso deseje");
+        jLabel5.setText("Caso deseje egistrar interesse em algum veículo, informe abaixo");
 
-        jLabel5.setText("registrar interesse em algum veículo, informe abaixo o preço desejado");
-
-        jLabel7.setText("para locar o veículo e após utilize a opção de Registrar Interesse.");
+        jLabel7.setText("o preço desejado e após utilize a opção de Registrar Interesse.");
 
         alugarVeiculo.setText("Alugar Veículo");
         alugarVeiculo.addActionListener(new java.awt.event.ActionListener() {
@@ -121,16 +121,6 @@ public class ConsultarCarros extends javax.swing.JFrame {
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
                         .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel1)
-                            .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel2)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(voltar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
                             .addComponent(jLabel9))
@@ -141,7 +131,16 @@ public class ConsultarCarros extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
                                 .addComponent(alugarVeiculo))
                             .addComponent(modeloVeiculo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(precoDesejado))))
+                            .addComponent(precoDesejado)))
+                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel2))
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel1))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jInternalFrame1Layout.setVerticalGroup(
@@ -151,8 +150,6 @@ public class ConsultarCarros extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -172,7 +169,7 @@ public class ConsultarCarros extends javax.swing.JFrame {
                     .addComponent(voltar)
                     .addComponent(registrarInteresse)
                     .addComponent(alugarVeiculo))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -216,15 +213,17 @@ public class ConsultarCarros extends javax.swing.JFrame {
 
     private void alugarVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alugarVeiculoActionPerformed
         String modeloVeic = modeloVeiculo.getSelectedItem().toString();
-        boolean ret = cliImpl.solicitacaoFormLocacao(modeloVeic);
+        String carro[] = modeloVeic.split("-");
+        String carroALocar = carro[0];
+        boolean ret = cliImpl.solicitacaoFormLocacao(carroALocar);
         if(!ret){
-            String msg = "Lamentamos, não foi possível acessar o formulário para alugar deste veículo.\n";
-            msg = msg + "Provavelmente, outro cliente esteja preenchendo a documentação no momento.";
+            String msg = "Lamentamos, não foi possível acessar o formulário de aluguel deste veículo.\n";
+            msg = msg + "Este carro não está disponível no momento.";
             JOptionPane.showMessageDialog(null, msg);
         }else{
             this.setVisible(false);
             this.dispose();
-            new AlugarCarro(cliImpl, modeloVeic).setVisible(true);
+            new AlugarCarro(cliImpl, carroALocar).setVisible(true);
         }
     }//GEN-LAST:event_alugarVeiculoActionPerformed
 
@@ -238,7 +237,6 @@ public class ConsultarCarros extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

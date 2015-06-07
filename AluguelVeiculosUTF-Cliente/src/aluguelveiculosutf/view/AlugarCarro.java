@@ -20,6 +20,7 @@ public class AlugarCarro extends javax.swing.JFrame {
     /**
      * Creates new form OpcoesTransferencia
      * @param cli
+     * @param modeloVeiculo
      */
     public AlugarCarro(CliImpl cli, String modeloVeiculo)
     {

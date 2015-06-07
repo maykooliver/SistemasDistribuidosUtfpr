@@ -7,16 +7,14 @@ import aluguelveiculosutf.servidor.Locador;
 import aluguelveiculosutf.servidor.ServicosServ;
 import static aluguelveiculosutf.servidor.ServicosServ.listaVeiculo;
 import aluguelveiculosutf.servidor.Veiculo;
-import aluguelveiculosutf.util.MyNumber;
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.NoSuchElementException;
-import javax.swing.JOptionPane;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,8 +22,8 @@ import javax.swing.JOptionPane;
  */
 public class ServImpl extends UnicastRemoteObject implements InterfaceServ{
     
-   public static ArrayList<Locador> listaLocadores;
-    public ArrayList<Interessado> listaInteressados;
+    public static ArrayList<Locador> listaLocadores;
+    public static ArrayList<Interessado> listaInteressados;
     
     /**
      * Implementação do servidor.
@@ -37,6 +35,7 @@ public class ServImpl extends UnicastRemoteObject implements InterfaceServ{
     {
         listaLocadores = new ArrayList<>();
         listaInteressados = new ArrayList<>();
+
        try{
             //Cria o registro para receber as referencias, para a porta 1099, local
             Registry referenciaServicoNome = LocateRegistry.createRegistry(1099);
@@ -70,7 +69,7 @@ public class ServImpl extends UnicastRemoteObject implements InterfaceServ{
         for (Veiculo veiculo: listaVeiculo){
             if(veiculo.getModelo().equals(modeloVeiculoLocado)){
                 veiculo.setOcupado(true);
-                ServicosServ.editarVeiculo(indice, veiculo);
+                ServicosServ.editarVeiculo(indice, true, veiculo);
             }else{
                 indice ++;
             }
@@ -122,16 +121,18 @@ public class ServImpl extends UnicastRemoteObject implements InterfaceServ{
                 }
             }
             
+            System.out.println("Veio até a metade");
             indice = 0;
             
             for (Veiculo veiculo : listaVeiculo) {
                 if (veiculo.getModelo().equals(modelo)) {
                     veiculo.setOcupado(false);
-                    ServicosServ.editarVeiculo(indice, veiculo);
+                    ServicosServ.editarVeiculo(indice, true, veiculo);
                 } else {
                     indice++;
                 }
             }
+            System.out.println("terminou o foreach de listaVeicuLOS");
             
             return true;
             
@@ -153,6 +154,16 @@ public class ServImpl extends UnicastRemoteObject implements InterfaceServ{
         listaVeiculos = ServicosServ.getListaVeiculo();
         System.out.println(listaVeiculos.get(0).getModelo());
         return listaVeiculos;
+    }
+    
+    public static void notificarCarro(String modelo, InterfaceCli ref){
+        InterfaceCli refCli = ref;
+        String msg = "Carro " + modelo + " já está disponível na margem de valor desejado.";
+        try {
+            ref.notifCarroDisp(msg);
+        } catch (RemoteException ex) {
+            Logger.getLogger(ServImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

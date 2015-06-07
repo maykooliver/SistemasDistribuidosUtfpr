@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aluguelveiculosutf.servidor;
 
-import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
+import aluguelveiculosutf.impl.ServImpl;
+import static aluguelveiculosutf.impl.ServImpl.listaLocadores;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import javax.swing.JOptionPane;
@@ -65,10 +59,29 @@ public class ServicosServ {
         
     }
 
-    public static void editarVeiculo(int indice, Veiculo veiculo) {
+    public static void editarVeiculo(int indice, boolean reqCliente, Veiculo veiculo) {
+        indice = indice - 1;
         listaVeiculo.set(indice, veiculo);
-        String msg = "Veículo editado com sucesso!";
-        JOptionPane.showMessageDialog(null, msg);
+        if(!reqCliente){
+            String msg = "Veículo editado com sucesso!";
+            JOptionPane.showMessageDialog(null, msg);
+        }
+        
+        Serializa serializa = new Serializa();
+        serializa.serializaVeiculos(listaVeiculo);
+            
+        for (Interessado inter : ServImpl.listaInteressados) {
+            if (inter.getModeloVeic().equals(veiculo.getModelo())){
+                if(inter.getValor() >= veiculo.getValorLocacao()){
+                    ServImpl.notificarCarro(inter.getModeloVeic(), inter.getRefCli());
+                }
+            }
+        }
+        
+        //TERMINAR ISSO SÁBADO A NOITE SEM FALTAAAAAAAAAAAA!!!!
+        
+        //Veiculo veic = listaVeiculo.get(indice);
+        //System.out.println("Veiculo setou para ocupado?" + veic.ocupado);
     }
 
     public static Veiculo buscarVeiculo(String modeloVeiculo) {

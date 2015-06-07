@@ -156,6 +156,7 @@ public class CliImpl extends UnicastRemoteObject implements InterfaceCli
 //    }
     
      public ArrayList<Veiculo> consultarVeiculo() throws IOException, ClassNotFoundException{
+        refServ.consultarVeiculos();
         ArrayList<Veiculo> listaVeiculo = new ArrayList<>();
         Serializa serializa = new Serializa();
         listaVeiculo = serializa.descerializaVeiculos();

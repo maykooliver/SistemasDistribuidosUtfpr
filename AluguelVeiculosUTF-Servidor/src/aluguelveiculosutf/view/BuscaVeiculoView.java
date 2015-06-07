@@ -242,6 +242,7 @@ public class BuscaVeiculoView extends javax.swing.JDialog {
         }
     }
     
+    
     private void modeloVeiculoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_modeloVeiculoKeyReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_modeloVeiculoKeyReleased
