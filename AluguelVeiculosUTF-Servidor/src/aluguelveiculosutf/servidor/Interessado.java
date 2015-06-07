@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aluguelveiculosutf.servidor;
 
 import aluguelveiculosutf.interfaces.InterfaceCli;
@@ -17,6 +12,12 @@ public class Interessado {
     private float valor;
     private InterfaceCli refCli;
     
+    /**
+     *
+     * @param modVeic
+     * @param preco
+     * @param ref
+     */
     public Interessado(String modVeic, float preco, InterfaceCli ref){
         modeloVeic = modVeic;
         valor = preco;

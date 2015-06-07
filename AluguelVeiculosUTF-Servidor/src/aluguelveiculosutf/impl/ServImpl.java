@@ -8,7 +8,6 @@
  *  veículo substituirá o primeiro.
  */
 
-
 package aluguelveiculosutf.impl;
 
 import aluguelveiculosutf.interfaces.InterfaceCli;
@@ -128,7 +127,6 @@ public class ServImpl extends UnicastRemoteObject implements InterfaceServ{
                 if (loc.getNomeCondutor().equals(nomeCli)) {
                     modelo = loc.getModeloVeiculoLocado();
                     loc.setLocacaoFinalizada(true);
-                    //listaLocadores.remove(indice);
                 } 
                 indice++;
             }

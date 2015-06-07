@@ -16,21 +16,26 @@ public interface InterfaceServ extends Remote{
      * Realiza a solicitação para a devolução de um veículo.
      * @param nomeCli
      * @param ref
+     * @return 
      * @throws java.rmi.RemoteException
      */
     public boolean devolverVeiculo(String nomeCli, InterfaceCli ref) throws RemoteException;
 
     /**
      * Alugar Veículo.
+     * @param modeloVeiculoLocado
      * @param locRetirada
      * @param locDevolucao
      * @param dataIni
+     * @param horaInicio
      * @param dataTerm
+     * @param horaFim
      * @param condutor
      * @param idade
      * @param numeroParcelas
      * @param ref
      * @return 
+     * @throws java.rmi.RemoteException 
      */
     public boolean alugarVeic(String modeloVeiculoLocado, String locRetirada, String locDevolucao, String dataIni, String horaInicio, String dataTerm, String horaFim, String condutor, int idade, String numeroParcelas, InterfaceCli ref) throws RemoteException;
 
@@ -40,6 +45,7 @@ public interface InterfaceServ extends Remote{
      * @param valor
      * @param ref
      * @return 
+     * @throws java.rmi.RemoteException 
      */
     public boolean regInteresseVeic(String modeloVeic, float valor, InterfaceCli ref) throws RemoteException;
 
@@ -48,6 +54,7 @@ public interface InterfaceServ extends Remote{
      * @param modeloVeic
      * @param ref
      * @return 
+     * @throws java.rmi.RemoteException 
      */
     public boolean solicitacaoFormLocacao(String modeloVeic, InterfaceCli ref) throws RemoteException;
 

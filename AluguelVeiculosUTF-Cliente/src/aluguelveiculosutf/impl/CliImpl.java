@@ -7,8 +7,8 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import aluguelveiculosutf.interfaces.InterfaceCli;
 import aluguelveiculosutf.interfaces.InterfaceServ;
-import aluguelveiculosutf.servidor.Serializa;
 import aluguelveiculosutf.servidor.Veiculo;
+import aluguelveiculosutf.util.Serializa;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -83,10 +83,13 @@ public class CliImpl extends UnicastRemoteObject implements InterfaceCli
      * Alugar Veículo.
      * Efetiva a locação de um veículo.
      * Cliente - Servidor - Cliente.
+     * @param modeloVeiculoLocado
      * @param locRetirada
      * @param locDevolucao
      * @param dataIni
+     * @param horaInicio
      * @param dataTerm
+     * @param horaFim
      * @param condutor
      * @param idade
      * @param numeroParcelas
@@ -138,6 +141,9 @@ public class CliImpl extends UnicastRemoteObject implements InterfaceCli
         return ret;
     }
 
+    /**
+     * Novo Cliente.
+     */
     public void novoCliente() {
         try {
             refServ.novoClienteConectado(nomeCli);
@@ -146,18 +152,13 @@ public class CliImpl extends UnicastRemoteObject implements InterfaceCli
         }
     }
     
-//    public ArrayList<Veiculo> consultarVeiculo(){
-//        ArrayList<Veiculo> listaVeiculo = new ArrayList<>();
-//        try {
-//            listaVeiculo = refServ.consultarVeiculos();
-//        } catch (RemoteException ex) {
-//            System.out.println("!adrem");
-//            //Logger.getLogger(CliImpl.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return listaVeiculo;
-//    }
-    
-     public ArrayList<Veiculo> consultarVeiculo() throws IOException, ClassNotFoundException{
+    /**
+     *
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    public ArrayList<Veiculo> consultarVeiculo() throws IOException, ClassNotFoundException{
         refServ.consultarVeiculos();
         ArrayList<Veiculo> listaVeiculo = new ArrayList<>();
         Serializa serializa = new Serializa();

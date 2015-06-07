@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aluguelveiculosutf.view;
-
 
 import aluguelveiculosutf.impl.CliImpl;
 import aluguelveiculosutf.servidor.Veiculo;
@@ -23,6 +17,8 @@ public class ConsultarCarros extends javax.swing.JFrame {
     /**
      * Creates new form OpcoesTransferencia
      * @param cli
+     * @throws java.io.IOException
+     * @throws java.lang.ClassNotFoundException
      */
     public ConsultarCarros(CliImpl cli) throws IOException, ClassNotFoundException
     {
@@ -34,7 +30,7 @@ public class ConsultarCarros extends javax.swing.JFrame {
         
         String disponibilidade;
         
-        for (Veiculo veiculo: listaVeiculo) {
+        for(Veiculo veiculo: listaVeiculo) {
             System.out.println(veiculo.isOcupado());
             modeloVeiculo.addItem(veiculo.getModelo() + "-R$" + veiculo.getValorLocacao());
         }

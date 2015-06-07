@@ -1,16 +1,12 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package aluguelveiculosutf.view;
 
 import aluguelveiculosutf.servidor.ServicosServ;
 import aluguelveiculosutf.servidor.Veiculo;
 import aluguelveiculosutf.util.MyNumber;
-import java.util.List;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author MAYKO
@@ -23,6 +19,8 @@ public class BuscaVeiculoView extends javax.swing.JDialog {
 
     /**
      * Creates new form tabela
+     * @param parent
+     * @param modal
      */
     public BuscaVeiculoView(java.awt.Frame parent, boolean modal) {
         
